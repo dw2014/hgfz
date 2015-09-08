@@ -1,0 +1,8 @@
+rootProject.name = 'hgfz'
+
+include 'common'
+
+include 'future'
+
+include 'core'
+

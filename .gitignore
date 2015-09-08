@@ -1,0 +1,94 @@
+# Hidden files
+.*
+!.gitignore
+!.gitkeep
+
+# Build outputs
+**/build/**
+**/target/**
+build/
+target/
+/build.log
+/out/**
+**/logs/**
+*.gz
+build.log
+build.err
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Package files
+*.jar
+*.war
+!liquibase/lib/*
+!identity/identity-data/src/test/resources/*
+!identity/libs/*.jar
+!solr/lib/*
+!extlibs/*.jar
+# Output files
+*.class
+**/classes/**
+classes/
+
+# IDE Files
+*.iws
+*.iml
+*.ipr
+
+# python execute Files
+*.pyc
+
+# Node modules
+**/node_modules/**
+node_modules/
+
+# tmux log
+tmux-*.log
+
+# log file
+*.log
+
+# btm log
+*.tlog
+
+# activemq log
+**/activemq-data/**
+activemq-data/
+
+# ignore diff orig file
+*.orig
+
+# ignore the personal configuration file
+common/configuration-data/src/main/resources/silkcloud/conf/onebox/common/personal.properties
+apphost/config-data/src/main/resources/silkcloud/conf/onebox/personal.properties
+apphost/config-data/src/main/resources/silkcloud/conf/onebox/z_personal.properties
+
+# ignore solr files
+catalog/solr-conf/catalog/data/**
+catalog-core/src/test/resources/solr/catalog/data/**
+order/solr-conf/order/data/**
+
+# ignore ui-bootstrap files
+catalog/catalog-admin/client/bower_components/**
+catalog/catalog-admin/node_modules/**
+catalog/channel-admin/client/bower_components/**
+catalog/channel-admin/node_modules/**
+
+# ignore gradle wrapper
+gradle/wrapper/**
+gradlew
+
+# ignore solr data
+solr/*/data/index/*
+solr/*/data/tlog/*
+solr/*/conf/_rest_managed.json
+
+# ignore maxmind database
+*.mmdb
+
+# erl crash dump
+erl_crash.dump
+
+dump.rdb
