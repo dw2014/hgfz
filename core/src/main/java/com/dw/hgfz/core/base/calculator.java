@@ -17,8 +17,8 @@ public class calculator {
 
     }
 
-    private static final String Day20Breaks = "Day 20 Breaks";
-    private static final String Day55Breaks = "Day 55 Breaks";
+    private static final String Day20Breaks = "20日突破";
+    private static final String Day55Breaks = "55日突破";
 
     public static List<TradeUnit> sort(List<TradeUnit> tradeUnits, String sort) {
         sortTradeUnits<TradeUnit> sortList = new sortTradeUnits<>();

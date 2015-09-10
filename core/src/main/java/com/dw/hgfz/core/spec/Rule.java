@@ -1,5 +1,7 @@
 package com.dw.hgfz.core.spec;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,10 +9,15 @@ import java.util.List;
  */
 public class Rule {
 
+    @SerializedName("入市系统")
     private String system;
+    @SerializedName("市场")
     private String market;
+    @SerializedName("头寸")
     private int position;
+    @SerializedName("入市点")
     private List<Order> orders;
+    @SerializedName("退出点")
     private double quitOrder;
 
     public String getSystem() {
