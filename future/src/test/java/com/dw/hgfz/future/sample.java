@@ -6,6 +6,7 @@ import com.dw.hgfz.common.utils.GsonHelper;
 import com.dw.hgfz.core.base.calculator;
 import com.dw.hgfz.core.spec.Rule;
 import com.dw.hgfz.core.spec.TradeUnit;
+import com.dw.hgfz.future.product.contracts;
 import com.google.gson.JsonArray;
 import org.junit.Test;
 
@@ -19,7 +20,8 @@ public class sample {
 
     @Test
     public void sampleCalculate() throws Exception {
-        JsonArray results = ApacheCommonClient.executeGet(ConfigHelper.getSetting("futureDataURI") + "AG1512");
+        String contract = "AU1512";
+        JsonArray results = ApacheCommonClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
         List<TradeUnit> tradeUnits = new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
             TradeUnit tmp = new TradeUnit();
@@ -36,9 +38,11 @@ public class sample {
         tradeUnits = calculator.calculateATR(tradeUnits);
         tradeUnits = calculator.sort(tradeUnits, "desc");
         System.out.println(GsonHelper.gsonSerializer(tradeUnits.get(0)));
-        List<Rule> rules = calculator.calculateRule(tradeUnits, "AG1512", "long");
+        List<Rule> rules = calculator.calculateRule(tradeUnits, contract, "long");
         System.out.println(GsonHelper.gsonSerializer(rules));
-        rules = calculator.calculateRule(tradeUnits, "AG1512", "short");
+        rules = calculator.calculateRule(tradeUnits, contract, "short");
         System.out.println(GsonHelper.gsonSerializer(rules));
+
+        System.out.println(contracts.auContract().getContractProduct().getBytes());
     }
 }
