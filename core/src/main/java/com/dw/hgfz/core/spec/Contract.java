@@ -9,11 +9,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlRootElement(name = "Contract")
-@XmlType(propOrder = {"contractCode", "unitsPerContract", "minPriceFluctuation", "maxDailyPriceFluctuation", "lowestMargin", "normalMargin"})
+@XmlType(propOrder = {"contractCode", "productName", "unitsPerContract", "minPriceFluctuation", "maxDailyPriceFluctuation", "lowestMargin", "normalMargin"})
 public class Contract {
 
     @XmlElement(required = true, name = "交易代码")
     private String contractCode;
+
+    @XmlElement(required = true, name = "交易产品")
+    private String productName;
 
     @XmlElement(required = true, name = "交易单位")
     private long unitsPerContract;

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <contracts>
     <contract contractCode="CU">
+        <productName>铜</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>10</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
@@ -8,6 +9,7 @@
         <normalMargin>0.13</normalMargin>
     </contract>
     <contract contractCode="AL">
+        <productName>铝</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -15,6 +17,7 @@
         <normalMargin>0.10</normalMargin>
     </contract>
     <contract contractCode="ZN">
+        <productName>锌</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -22,6 +25,7 @@
         <normalMargin>0.12</normalMargin>
     </contract>
     <contract contractCode="PB">
+        <productName>铅</productName>
         <unitsPerContract>25</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
@@ -29,6 +33,7 @@
         <normalMargin>0.13</normalMargin>
     </contract>
     <contract contractCode="AU">
+        <productName>黄金</productName>
         <unitsPerContract>1000</unitsPerContract>
         <minPriceFluctuation>0.01</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
@@ -36,6 +41,7 @@
         <normalMargin>0.13</normalMargin>
     </contract>
     <contract contractCode="FU">
+        <productName>燃料油</productName>
         <unitsPerContract>50</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
@@ -43,6 +49,7 @@
         <normalMargin>0.12</normalMargin>
     </contract>
     <contract contractCode="AG">
+        <productName>白银</productName>
         <unitsPerContract>15</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.06</maxDailyPriceFluctuation>
@@ -50,6 +57,7 @@
         <normalMargin>0.15</normalMargin>
     </contract>
     <contract contractCode="C">
+        <productName>玉米</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -57,13 +65,7 @@
         <normalMargin>0.08</normalMargin>
     </contract>
     <contract contractCode="A">
-        <unitsPerContract>10</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.08</normalMargin>
-    </contract>
-    <contract contractCode="B">
+        <productName>黄大豆1号</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -71,6 +73,7 @@
         <normalMargin>0.08</normalMargin>
     </contract>
     <contract contractCode="M">
+        <productName>豆粕</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -78,34 +81,15 @@
         <normalMargin>0.10</normalMargin>
     </contract>
     <contract contractCode="Y">
+        <productName>豆油</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>2</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
         <lowestMargin>0.05</lowestMargin>
         <normalMargin>0.09</normalMargin>
     </contract>
-    <contract contractCode="WS">
-        <unitsPerContract>10</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.06</lowestMargin>
-        <normalMargin>0.10</normalMargin>
-    </contract>
-    <contract contractCode="CF">
-        <unitsPerContract>5</unitsPerContract>
-        <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.06</lowestMargin>
-        <normalMargin>0.10</normalMargin>
-    </contract>
-    <contract contractCode="PM">
-        <unitsPerContract>50</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
-    </contract>
     <contract contractCode="WH">
+        <productName>强麦</productName>
         <unitsPerContract>20</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
