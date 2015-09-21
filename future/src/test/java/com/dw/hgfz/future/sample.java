@@ -6,7 +6,6 @@ import com.dw.hgfz.common.utils.GsonHelper;
 import com.dw.hgfz.core.base.calculator;
 import com.dw.hgfz.core.spec.Rule;
 import com.dw.hgfz.core.spec.TradeUnit;
-import com.dw.hgfz.future.product.contracts;
 import com.google.gson.JsonArray;
 import org.junit.Test;
 
@@ -42,7 +41,5 @@ public class sample {
         System.out.println(GsonHelper.gsonSerializer(rules));
         rules = calculator.calculateRule(tradeUnits, contract, "short");
         System.out.println(GsonHelper.gsonSerializer(rules));
-
-        System.out.println(contracts.auContract().getContractProduct().getBytes());
     }
 }

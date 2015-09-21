@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<contracts>
+    <contract contractCode="CU">
+        <unitsPerContract>5</unitsPerContract>
+        <minPriceFluctuation>10</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+    </contract>
+    <contract contractCode="AL">
+        <unitsPerContract>5</unitsPerContract>
+        <minPriceFluctuation>5</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.10</normalMargin>
+    </contract>
+    <contract contractCode="ZN">
+        <unitsPerContract>5</unitsPerContract>
+        <minPriceFluctuation>5</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.06</lowestMargin>
+        <normalMargin>0.12</normalMargin>
+    </contract>
+    <contract contractCode="PB">
+        <unitsPerContract>25</unitsPerContract>
+        <minPriceFluctuation>5</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+    </contract>
+    <contract contractCode="AU">
+        <unitsPerContract>1000</unitsPerContract>
+        <minPriceFluctuation>0.01</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+    </contract>
+    <contract contractCode="FU">
+        <unitsPerContract>50</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.12</normalMargin>
+    </contract>
+    <contract contractCode="AG">
+        <unitsPerContract>15</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.06</maxDailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.15</normalMargin>
+    </contract>
+    <contract contractCode="C">
+        <unitsPerContract>10</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.08</normalMargin>
+    </contract>
+    <contract contractCode="A">
+        <unitsPerContract>10</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.08</normalMargin>
+    </contract>
+    <contract contractCode="B">
+        <unitsPerContract>10</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.08</normalMargin>
+    </contract>
+    <contract contractCode="M">
+        <unitsPerContract>10</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.10</normalMargin>
+    </contract>
+    <contract contractCode="Y">
+        <unitsPerContract>10</unitsPerContract>
+        <minPriceFluctuation>2</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.09</normalMargin>
+    </contract>
+    <contract contractCode="WS">
+        <unitsPerContract>10</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.06</lowestMargin>
+        <normalMargin>0.10</normalMargin>
+    </contract>
+    <contract contractCode="CF">
+        <unitsPerContract>5</unitsPerContract>
+        <minPriceFluctuation>5</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.06</lowestMargin>
+        <normalMargin>0.10</normalMargin>
+    </contract>
+    <contract contractCode="PM">
+        <unitsPerContract>50</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.10</normalMargin>
+    </contract>
+    <contract contractCode="WH">
+        <unitsPerContract>20</unitsPerContract>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
+        <normalMargin>0.10</normalMargin>
+    </contract>
+</contracts>
