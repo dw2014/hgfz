@@ -15,6 +15,8 @@ public class Rule {
     private String market;
     @SerializedName("头寸")
     private int position;
+    @SerializedName("买空")
+    private Boolean isLong;
     @SerializedName("入市点")
     private List<Order> orders;
     @SerializedName("退出点")
@@ -42,6 +44,14 @@ public class Rule {
 
     public void setPosition(int value) {
         this.position = value;
+    }
+
+    public Boolean getIsLong() {
+        return this.isLong;
+    }
+
+    public void setIsLong(boolean value) {
+        this.isLong = value;
     }
 
     public List<Order> getOrders() {

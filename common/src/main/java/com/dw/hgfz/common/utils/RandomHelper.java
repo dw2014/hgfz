@@ -35,6 +35,10 @@ public class RandomHelper {
         return new Random().nextInt();
     }
 
+    public static int randomInt(int n) {
+        return new Random().nextInt(n);
+    }
+
     public static Boolean randomBoolean() {
         List<Object> array = new ArrayList<>();
         array.add(true);
@@ -92,8 +96,8 @@ public class RandomHelper {
         return "86135" + randomNumeric(8);
     }
 
-    public static Double randomDouble(Integer limit) throws Exception {
-        return (new Random().nextDouble() % limit);
+    public static Double randomDouble() throws Exception {
+        return new Random().nextDouble();
     }
 
     public static String randomUnityId() throws Exception {

@@ -1,21 +1,14 @@
 package com.dw.hgfz.common.httpclient;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.dw.hgfz.common.utils.GsonHelper;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.PutMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.NameValuePair;
-
-import java.util.List;
 
 /**
  * Created by dw on 9/7/2015.
