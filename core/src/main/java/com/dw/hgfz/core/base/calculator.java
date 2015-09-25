@@ -142,7 +142,7 @@ public class calculator {
         return rules;
     }
 
-    public static void process(JsonArray results, String market) throws Exception {
+    public static void process(JsonArray results, String market, String path) throws Exception {
         List<TradeUnit> tradeUnits = new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
             TradeUnit tmp = new TradeUnit();
@@ -162,5 +162,6 @@ public class calculator {
         System.out.println(market + "最近一交易日数据");
         System.out.println(GsonHelper.gsonSerializer(tradeUnits.get(0)));
         CommonHelper.printList(rules, market + "海龟法则计算结果");
+        writeFile.writeToFile(tradeUnits.get(0), rules, market, path);
     }
 }

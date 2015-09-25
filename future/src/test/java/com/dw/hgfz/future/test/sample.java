@@ -13,8 +13,10 @@ public class sample {
 
     @Test
     public void sampleCalculate() throws Exception {
-        String contract = "AU1512";
-        JsonArray results = ApacheCommonClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
-        calculator.process(results, contract);
+        String[] contracts = ConfigHelper.getSetting("interestedContracts").split(",");
+        for (String contract : contracts) {
+            JsonArray results = ApacheCommonClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
+            calculator.process(results, contract, ConfigHelper.getSetting("logPath"));
+        }
     }
 }
