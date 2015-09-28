@@ -13,12 +13,12 @@ import org.apache.commons.io.IOUtils;
 /**
  * Created by dw on 9/7/2015.
  */
-public class ApacheCommonClient {
+public class ApacheClient {
 
     private static final MultiThreadedHttpConnectionManager connectionManager = new MultiThreadedHttpConnectionManager();
     private static final HttpClient client = new HttpClient(connectionManager);
 
-    private ApacheCommonClient() {
+    private ApacheClient() {
 
     }
 

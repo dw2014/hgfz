@@ -1,35 +1,86 @@
 package com.dw.hgfz.core.spec;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by dw on 9/21/2015.
  */
-
-@XmlRootElement(name = "Contract")
-@XmlType(propOrder = {"contractCode", "productName", "unitsPerContract", "minPriceFluctuation", "maxDailyPriceFluctuation", "lowestMargin", "normalMargin"})
 public class Contract {
 
-    @XmlElement(required = true, name = "交易代码")
+    @SerializedName("交易代码")
     private String contractCode;
 
-    @XmlElement(required = true, name = "交易产品")
+    @SerializedName("交易产品")
     private String productName;
 
-    @XmlElement(required = true, name = "交易单位")
+    @SerializedName("交易单位")
     private long unitsPerContract;
 
-    @XmlElement(required = true, name = "最小变动价位")
+    @SerializedName("最小变动价位")
     private double minPriceFluctuation;
 
-    @XmlElement(required = true, name = "每日最大价格波动")
+    @SerializedName("每日最大价格波动")
     private double maxDailyPriceFluctuation;
 
-    @XmlElement(required = true, name = "最低交易保证金")
+    @SerializedName("最低交易保证金")
     private double lowestMargin;
 
-    @XmlElement(required = true, name = "平日交易保证金")
+    @SerializedName("平日交易保证金")
     private double normalMargin;
+
+    public String getContractCode() {
+        return this.contractCode;
+    }
+
+    public void setContractCode(String value) {
+        this.contractCode = value;
+    }
+
+    public String getProductName() {
+        return this.productName;
+    }
+
+    public void setProductName(String value) {
+        this.productName = value;
+    }
+
+    public long getUnitsPerContract() {
+        return this.unitsPerContract;
+    }
+
+    public void setUnitsPerContract(long value) {
+        this.unitsPerContract = value;
+    }
+
+    public double getMinPriceFluctuation() {
+        return this.minPriceFluctuation;
+    }
+
+    public void setMinPriceFluctuation(double value) {
+        this.minPriceFluctuation = value;
+    }
+
+    public double getMaxDailyPriceFluctuation() {
+        return this.maxDailyPriceFluctuation;
+    }
+
+    public void setMaxDailyPriceFluctuation(double value) {
+        this.maxDailyPriceFluctuation = value;
+    }
+
+    public double getLowestMargin() {
+        return this.lowestMargin;
+    }
+
+    public void setLowestMargin(double value) {
+        this.lowestMargin = value;
+    }
+
+    public double getNormalMargin() {
+        return this.normalMargin;
+    }
+
+    public void setNormalMargin(double value) {
+        this.normalMargin = value;
+    }
 }
