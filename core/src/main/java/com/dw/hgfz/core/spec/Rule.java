@@ -11,15 +11,15 @@ public class Rule {
 
     @SerializedName("入市系统")
     private String system;
-    @SerializedName("市场")
+    @SerializedName("商品合约")
     private String market;
-    @SerializedName("头寸")
+    @SerializedName("头寸规模")
     private int position;
-    @SerializedName("买空")
-    private Boolean isLong;
-    @SerializedName("入市点")
+    @SerializedName("多空行情")
+    private String shortOrLong;
+    @SerializedName("入市价位")
     private List<Order> orders;
-    @SerializedName("退出点")
+    @SerializedName("退出价位")
     private double quitOrder;
 
     public String getSystem() {
@@ -46,12 +46,12 @@ public class Rule {
         this.position = value;
     }
 
-    public Boolean getIsLong() {
-        return this.isLong;
+    public String getShortOrLong() {
+        return this.shortOrLong;
     }
 
-    public void setIsLong(boolean value) {
-        this.isLong = value;
+    public void setShortOrLong(String value) {
+        this.shortOrLong = value;
     }
 
     public List<Order> getOrders() {

@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Order {
 
-    @SerializedName("入市价")
+    @SerializedName("入市价格")
     private double order;
-    @SerializedName("止损价")
+    @SerializedName("止损价格")
     private double stopOrder;
 
     public double getOrder() {

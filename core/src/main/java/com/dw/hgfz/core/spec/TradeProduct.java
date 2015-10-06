@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by dw on 9/7/2015.
  */
-public class TradeUnit {
+public class TradeProduct {
 
     @SerializedName("日期")
     private String date;

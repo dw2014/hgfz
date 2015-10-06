@@ -35,6 +35,7 @@ public final class readContracts {
                     Contract contract = new Contract();
                     contract.setContractCode(eElement.getAttribute("contractCode"));
                     contract.setProductName(eElement.getElementsByTagName("productName").item(0).getTextContent());
+                    contract.setMasterContract(eElement.getElementsByTagName("masterContract").item(0).getTextContent());
                     contract.setUnitsPerContract(Long.parseLong(eElement.getElementsByTagName("unitsPerContract").item(0).getTextContent()));
                     contract.setMinPriceFluctuation(Double.parseDouble(eElement.getElementsByTagName("minPriceFluctuation").item(0).getTextContent()));
                     contract.setMaxDailyPriceFluctuation(Double.parseDouble(eElement.getElementsByTagName("maxDailyPriceFluctuation").item(0).getTextContent()));
@@ -46,5 +47,16 @@ public final class readContracts {
         } catch (Exception e) {
             throw new ExceptionInInitializerError(e);
         }
+    }
+
+    public static Contract getContract(String masterContract) {
+        Contract contract = new Contract();
+        for (int i = 0; i < readContracts.CONTRACTS.size(); i++) {
+            if (readContracts.CONTRACTS.get(i).getMasterContract().equalsIgnoreCase(masterContract)) {
+                contract = readContracts.CONTRACTS.get(i);
+                break;
+            }
+        }
+        return contract;
     }
 }

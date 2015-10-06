@@ -2,7 +2,8 @@ package com.dw.hgfz.core.base;
 
 import com.dw.hgfz.common.utils.GsonHelper;
 import com.dw.hgfz.core.spec.Rule;
-import com.dw.hgfz.core.spec.TradeUnit;
+import com.dw.hgfz.core.spec.TradeContract;
+import com.dw.hgfz.core.spec.TradeProduct;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -20,9 +21,13 @@ public class writeFile {
 
     }
 
-    public static void writeToFile(TradeUnit latestUnit, List<Rule> rules, String market, String path) throws Exception {
+    public static void writeToFile(
+            TradeContract tradeContract, TradeProduct latestUnit, List<Rule> rules,
+            String market, String path) throws Exception {
         path = path + "\\" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".txt ";
         PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
+        writer.println(market + "最新合约交易数据");
+        writer.println(GsonHelper.gsonSerializer(tradeContract));
         writer.println(market + "最近一交易日数据");
         writer.println(GsonHelper.gsonSerializer(latestUnit));
         writer.println(market + "海龟法则计算结果");

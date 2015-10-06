@@ -13,6 +13,9 @@ public class Contract {
     @SerializedName("交易产品")
     private String productName;
 
+    @SerializedName("主力合约")
+    private String masterContract;
+
     @SerializedName("交易单位")
     private long unitsPerContract;
 
@@ -42,6 +45,14 @@ public class Contract {
 
     public void setProductName(String value) {
         this.productName = value;
+    }
+
+    public String getMasterContract() {
+        return this.masterContract;
+    }
+
+    public void setMasterContract(String value) {
+        this.masterContract = value;
     }
 
     public long getUnitsPerContract() {

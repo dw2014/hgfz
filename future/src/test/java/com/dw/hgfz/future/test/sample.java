@@ -14,8 +14,8 @@ public class sample {
 
     @Test
     public void sampleCalculate() throws Exception {
-        String[] contracts = ConfigHelper.getSetting("interestedContracts").split(",");
-        for (String contract : contracts) {
+        for (int i = 0; i < readContracts.CONTRACTS.size(); i++) {
+            String contract = readContracts.CONTRACTS.get(i).getMasterContract();
             JsonArray results = ApacheClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
             calculator.process(results, contract, ConfigHelper.getSetting("logPath"));
         }

@@ -4,9 +4,10 @@ import com.dw.hgfz.common.utils.CommonHelper;
 import com.dw.hgfz.common.utils.RandomHelper;
 import com.dw.hgfz.core.base.calculator;
 import com.dw.hgfz.core.spec.Order;
-import com.dw.hgfz.core.spec.TradeUnit;
+import com.dw.hgfz.core.spec.TradeProduct;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,68 +18,68 @@ public class functionTests {
 
     @Test
     public void testCalculateSort() throws Exception {
-        List<TradeUnit> tradeUnits = new ArrayList<>();
+        List<TradeProduct> tradeProducts = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            TradeUnit tradeUnit = new TradeUnit();
-            tradeUnit.setDate("2015-05-" + String.format("%02d", RandomHelper.randomInt(31)));
-            tradeUnits.add(i, tradeUnit);
+            TradeProduct tradeProduct = new TradeProduct();
+            tradeProduct.setDate("2015-05-" + String.format("%02d", RandomHelper.randomInt(31)));
+            tradeProducts.add(i, tradeProduct);
         }
-        tradeUnits = calculator.sort(tradeUnits, null);
-        for (int i = 0; i < 5; i++) {
-            if (i == 4) continue;
-            assert Long.parseLong(tradeUnits.get(i).getDate().replace("-", ""))
-                    <= Long.parseLong(tradeUnits.get(i + 1).getDate().replace("-", ""));
-        }
-        CommonHelper.printList(tradeUnits, "asc order");
-        tradeUnits = calculator.sort(tradeUnits, "desc");
+        tradeProducts = calculator.sort(tradeProducts, null);
         for (int i = 0; i < 5; i++) {
             if (i == 4) continue;
-            assert Long.parseLong(tradeUnits.get(i).getDate().replace("-", ""))
-                    >= Long.parseLong(tradeUnits.get(i + 1).getDate().replace("-", ""));
+            assert Long.parseLong(tradeProducts.get(i).getDate().replace("-", ""))
+                    <= Long.parseLong(tradeProducts.get(i + 1).getDate().replace("-", ""));
         }
-        CommonHelper.printList(tradeUnits, "desc order");
+        CommonHelper.printList(tradeProducts, "asc order");
+        tradeProducts = calculator.sort(tradeProducts, "desc");
+        for (int i = 0; i < 5; i++) {
+            if (i == 4) continue;
+            assert Long.parseLong(tradeProducts.get(i).getDate().replace("-", ""))
+                    >= Long.parseLong(tradeProducts.get(i + 1).getDate().replace("-", ""));
+        }
+        CommonHelper.printList(tradeProducts, "desc order");
     }
 
     @Test
     public void testCalculateTR() throws Exception {
-        List<TradeUnit> tradeUnits = new ArrayList<>();
-        TradeUnit yesterday = new TradeUnit();
+        List<TradeProduct> tradeProducts = new ArrayList<>();
+        TradeProduct yesterday = new TradeProduct();
         yesterday.setClose(Math.round(RandomHelper.randomDouble() * 100));
-        tradeUnits.add(0, yesterday);
-        TradeUnit today = new TradeUnit();
+        tradeProducts.add(0, yesterday);
+        TradeProduct today = new TradeProduct();
         today.setHigh(Math.round(RandomHelper.randomDouble() * 100));
         today.setLow(Math.round(RandomHelper.randomDouble() * 100));
-        tradeUnits.add(1, today);
-        tradeUnits = calculator.calculateTR(tradeUnits);
-        assert tradeUnits.get(1).getTr() == Math.max(today.getHigh() - today.getLow(),
+        tradeProducts.add(1, today);
+        tradeProducts = calculator.calculateTR(tradeProducts);
+        assert tradeProducts.get(1).getTr() == Math.max(today.getHigh() - today.getLow(),
                 Math.max(today.getHigh() - yesterday.getClose(), yesterday.getClose() - today.getLow()));
-        CommonHelper.printList(tradeUnits, null);
+        CommonHelper.printList(tradeProducts, null);
     }
 
     @Test
     public void testCalculateATR() throws Exception {
-        List<TradeUnit> tradeUnits = new ArrayList<>();
+        List<TradeProduct> tradeProducts = new ArrayList<>();
         for (int i = 0; i < 25; i++) {
-            TradeUnit tradeUnit = new TradeUnit();
-            tradeUnit.setHigh(Math.round(RandomHelper.randomDouble() * 100));
-            tradeUnit.setLow(Math.round(RandomHelper.randomDouble() * 100));
-            tradeUnit.setClose(Math.round(RandomHelper.randomDouble() * 100));
-            tradeUnits.add(i, tradeUnit);
+            TradeProduct tradeProduct = new TradeProduct();
+            tradeProduct.setHigh(Math.round(RandomHelper.randomDouble() * 100));
+            tradeProduct.setLow(Math.round(RandomHelper.randomDouble() * 100));
+            tradeProduct.setClose(Math.round(RandomHelper.randomDouble() * 100));
+            tradeProducts.add(i, tradeProduct);
         }
-        tradeUnits = calculator.calculateTR(tradeUnits);
-        tradeUnits = calculator.calculateATR(tradeUnits);
+        tradeProducts = calculator.calculateTR(tradeProducts);
+        tradeProducts = calculator.calculateATR(tradeProducts);
         for (int i = 0; i < 20; i++) {
-            assert tradeUnits.get(i).getAtr() == 0.0;
+            assert tradeProducts.get(i).getAtr() == 0.0;
         }
         double first20TRSum = 0.0;
         for (int i = 0; i < 20; i++) {
-            first20TRSum += tradeUnits.get(i).getTr();
+            first20TRSum += tradeProducts.get(i).getTr();
         }
-        assert tradeUnits.get(20).getAtr() == first20TRSum / 20;
-        for (int i = 21; i < tradeUnits.size(); i++) {
-            assert tradeUnits.get(i).getAtr() == (19 * tradeUnits.get(i - 1).getAtr() + tradeUnits.get(i).getTr()) / 20;
+        assert tradeProducts.get(20).getAtr() == first20TRSum / 20;
+        for (int i = 21; i < tradeProducts.size(); i++) {
+            assert tradeProducts.get(i).getAtr() == (19 * tradeProducts.get(i - 1).getAtr() + tradeProducts.get(i).getTr()) / 20;
         }
-        CommonHelper.printList(tradeUnits, "TR and ATR are calculated and validated.");
+        CommonHelper.printList(tradeProducts, "TR and ATR are calculated and validated.");
     }
 
     @Test
@@ -87,7 +88,7 @@ public class functionTests {
         double latestATR = Math.round(RandomHelper.randomDouble() * 1000) % 100;
         System.out.println("openOrder: " + openOrder + "|latestATR: " + latestATR);
 
-        List<Order> orders = calculator.calculateOrders(openOrder, latestATR, true);
+        List<Order> orders = calculator.calculateOrders(openOrder, latestATR, 0.0, true);
         double tmpOpenOrder = openOrder;
         for (int i = 0; i < orders.size(); i++) {
             assert orders.get(i).getOrder() == tmpOpenOrder;
@@ -95,7 +96,7 @@ public class functionTests {
             tmpOpenOrder += latestATR / 2;
         }
         CommonHelper.printList(orders, "long order list");
-        orders = calculator.calculateOrders(openOrder, latestATR, false);
+        orders = calculator.calculateOrders(openOrder, latestATR, 0.0, false);
         tmpOpenOrder = openOrder;
         for (int i = 0; i < orders.size(); i++) {
             assert orders.get(i).getOrder() == tmpOpenOrder;
@@ -107,36 +108,62 @@ public class functionTests {
 
     @Test
     public void testCalculatePeakValue() throws Exception {
-        List<TradeUnit> tradeUnits = new ArrayList<>();
+        List<TradeProduct> tradeProducts = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            TradeUnit tradeUnit = new TradeUnit();
-            tradeUnit.setHigh(Math.round(RandomHelper.randomDouble() * 1000) % 1000);
-            tradeUnit.setLow(Math.round(RandomHelper.randomDouble() * 1000) % 1000);
-            tradeUnits.add(i, tradeUnit);
+            TradeProduct tradeProduct = new TradeProduct();
+            tradeProduct.setHigh(Math.round(RandomHelper.randomDouble() * 1000) % 1000);
+            tradeProduct.setLow(Math.round(RandomHelper.randomDouble() * 1000) % 1000);
+            tradeProducts.add(i, tradeProduct);
         }
-        CommonHelper.printList(tradeUnits, null);
+        CommonHelper.printList(tradeProducts, null);
 
-        int days = RandomHelper.randomInt(tradeUnits.size());
+        int days = RandomHelper.randomInt(tradeProducts.size());
         double highPeak = 0.0;
         for (int i = 0; i < days; i++) {
             if (i == 0) {
-                highPeak = tradeUnits.get(i).getHigh();
+                highPeak = tradeProducts.get(i).getHigh();
                 continue;
             }
-            highPeak = Math.max(highPeak, tradeUnits.get(i).getHigh());
+            highPeak = Math.max(highPeak, tradeProducts.get(i).getHigh());
         }
-        assert highPeak == calculator.calculatePeakValue(tradeUnits, days, true);
+        assert highPeak == calculator.calculatePeakValue(tradeProducts, days, true);
         System.out.println("high peak is " + highPeak + " in last " + days + " days.");
 
         double lowPeak = 0.0;
         for (int i = 0; i < days; i++) {
             if (i == 0) {
-                lowPeak = tradeUnits.get(i).getLow();
+                lowPeak = tradeProducts.get(i).getLow();
                 continue;
             }
-            lowPeak = Math.min(lowPeak, tradeUnits.get(i).getLow());
+            lowPeak = Math.min(lowPeak, tradeProducts.get(i).getLow());
         }
-        assert lowPeak == calculator.calculatePeakValue(tradeUnits, days, false);
+        assert lowPeak == calculator.calculatePeakValue(tradeProducts, days, false);
         System.out.println("low peak is " + lowPeak + " in last " + days + " days.");
+    }
+
+    @Test
+    public void testCalculatePriceFluctuation() throws Exception {
+        assert calculator.calculatePriceFluctuation(new BigDecimal("100.01"), 0.01).doubleValue() ==
+                new BigDecimal("100.01").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("100.01"), 1).doubleValue() ==
+                new BigDecimal("100").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("102.01"), 2).doubleValue() ==
+                new BigDecimal("102").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("103.00"), 2).doubleValue() ==
+                new BigDecimal("104").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("103.66"), 2).doubleValue() ==
+                new BigDecimal("104").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("102.01"), 5).doubleValue() ==
+                new BigDecimal("100").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("102.50"), 5).doubleValue() ==
+                new BigDecimal("105").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("103.66"), 5).doubleValue() ==
+                new BigDecimal("105").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("103.66"), 10).doubleValue() ==
+                new BigDecimal("100").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("105.00"), 10).doubleValue() ==
+                new BigDecimal("110").doubleValue();
+        assert calculator.calculatePriceFluctuation(new BigDecimal("106.66"), 10).doubleValue() ==
+                new BigDecimal("110").doubleValue();
     }
 }
