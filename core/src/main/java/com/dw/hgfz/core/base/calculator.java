@@ -111,6 +111,20 @@ public class calculator {
         return peakValue;
     }
 
+    public static double calculatePeakValueWithStartDate(
+            List<TradeProduct> tradeProducts, String startDate, int days, boolean calculateHigh) {
+        assert startDate != null;
+        List<TradeProduct> products = new ArrayList<>();
+        for (int j = 0; j < tradeProducts.size(); j++) {
+            if (startDate.equalsIgnoreCase(tradeProducts.get(j).getDate())) {
+                for (int i = j; i < tradeProducts.size(); i++) {
+                    products.add(tradeProducts.get(i));
+                }
+            }
+        }
+        return calculatePeakValue(products, days, calculateHigh);
+    }
+
     public static TradeContract calculateTradeContract(Contract contract, TradeProduct tradeProduct) {
         TradeContract tradeContract = new TradeContract();
         tradeContract.setDate(tradeProduct.getDate());
@@ -175,8 +189,7 @@ public class calculator {
         return rules;
     }
 
-    public static void process(JsonArray results, String masterContract, String path) throws Exception {
-        Contract contract = readContracts.getContract(masterContract);
+    public static List<TradeProduct> parseRestResults(JsonArray results) {
         List<TradeProduct> tradeProducts = new ArrayList<>();
         for (int i = 0; i < results.size(); i++) {
             TradeProduct tmp = new TradeProduct();
@@ -188,6 +201,12 @@ public class calculator {
             tmp.setVolume(results.get(i).getAsJsonArray().get(5).getAsLong());
             tradeProducts.add(i, tmp);
         }
+        return tradeProducts;
+    }
+
+    public static void process(JsonArray results, String masterContract, String path) throws Exception {
+        Contract contract = readContracts.getContract(masterContract);
+        List<TradeProduct> tradeProducts = parseRestResults(results);
         tradeProducts = sort(tradeProducts, null);
         tradeProducts = calculateTR(tradeProducts);
         tradeProducts = calculateATR(tradeProducts);
