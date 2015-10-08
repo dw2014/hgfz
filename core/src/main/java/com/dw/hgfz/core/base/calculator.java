@@ -21,8 +21,8 @@ public class calculator {
 
     private static final String Day20Breaks = "20日突破";
     private static final String Day55Breaks = "55日突破";
-    private static final String BuyLong = "看多";
-    private static final String BuyShort = "看空";
+    private static final String BuyLong = "做多";
+    private static final String BuyShort = "做空";
 
     public static List<TradeProduct> sort(List<TradeProduct> tradeProducts, String sort) {
         sortList<TradeProduct> sortList = new sortList<>();
