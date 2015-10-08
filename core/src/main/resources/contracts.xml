@@ -11,7 +11,7 @@
     </contract>
     <contract contractCode="AL">
         <productName>铝</productName>
-        <masterContract>AL1511</masterContract>
+        <masterContract>AL1512</masterContract>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -29,7 +29,7 @@
     </contract>
     <contract contractCode="PB">
         <productName>铅</productName>
-        <masterContract>PB1510</masterContract>
+        <masterContract>PB1511</masterContract>
         <unitsPerContract>25</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
@@ -44,15 +44,6 @@
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
         <lowestMargin>0.07</lowestMargin>
         <normalMargin>0.13</normalMargin>
-    </contract>
-    <contract contractCode="FU">
-        <productName>燃料油</productName>
-        <masterContract>FU1510</masterContract>
-        <unitsPerContract>50</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
-        <lowestMargin>0.08</lowestMargin>
-        <normalMargin>0.12</normalMargin>
     </contract>
     <contract contractCode="AG">
         <productName>白银</productName>
