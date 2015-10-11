@@ -2,7 +2,7 @@
 <contracts>
     <contract contractCode="CU">
         <productName>铜</productName>
-        <masterContract>CU1511</masterContract>
+        <masterContract>CU1512</masterContract>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>10</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
@@ -20,7 +20,7 @@
     </contract>
     <contract contractCode="ZN">
         <productName>锌</productName>
-        <masterContract>ZN1511</masterContract>
+        <masterContract>ZN1512</masterContract>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
@@ -29,7 +29,7 @@
     </contract>
     <contract contractCode="PB">
         <productName>铅</productName>
-        <masterContract>PB1511</masterContract>
+        <masterContract>PB1512</masterContract>
         <unitsPerContract>25</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
         <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
