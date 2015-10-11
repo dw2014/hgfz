@@ -92,3 +92,5 @@ solr/*/conf/_rest_managed.json
 erl_crash.dump
 
 dump.rdb
+
+local.properties
