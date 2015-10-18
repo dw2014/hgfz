@@ -1,10 +1,6 @@
 package com.dw.hgfz.core.base;
 
-
-import com.dw.hgfz.common.utils.CommonHelper;
-import com.dw.hgfz.common.utils.GsonHelper;
 import com.dw.hgfz.core.spec.*;
-import com.google.gson.JsonArray;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,12 +19,6 @@ public class calculator {
     private static final String Day55Breaks = "55日突破";
     private static final String BuyLong = "做多";
     private static final String BuyShort = "做空";
-
-    public static List<TradeProduct> sort(List<TradeProduct> tradeProducts, String sort) {
-        sortList<TradeProduct> sortList = new sortList<>();
-        sortList.sort(tradeProducts, "getDate", sort);
-        return tradeProducts;
-    }
 
     public static List<TradeProduct> calculateTR(List<TradeProduct> tradeProducts) {
         assert tradeProducts.size() > 1;
@@ -187,37 +177,5 @@ public class calculator {
             rules.add(rule55short);
         }
         return rules;
-    }
-
-    public static List<TradeProduct> parseRestResults(JsonArray results) {
-        List<TradeProduct> tradeProducts = new ArrayList<>();
-        for (int i = 0; i < results.size(); i++) {
-            TradeProduct tmp = new TradeProduct();
-            tmp.setDate(results.get(i).getAsJsonArray().get(0).getAsString());
-            tmp.setOpen(results.get(i).getAsJsonArray().get(1).getAsDouble());
-            tmp.setHigh(results.get(i).getAsJsonArray().get(2).getAsDouble());
-            tmp.setLow(results.get(i).getAsJsonArray().get(3).getAsDouble());
-            tmp.setClose(results.get(i).getAsJsonArray().get(4).getAsDouble());
-            tmp.setVolume(results.get(i).getAsJsonArray().get(5).getAsLong());
-            tradeProducts.add(i, tmp);
-        }
-        return tradeProducts;
-    }
-
-    public static void process(JsonArray results, String masterContract, String path) throws Exception {
-        Contract contract = readContracts.getContract(masterContract);
-        List<TradeProduct> tradeProducts = parseRestResults(results);
-        tradeProducts = sort(tradeProducts, null);
-        tradeProducts = calculateTR(tradeProducts);
-        tradeProducts = calculateATR(tradeProducts);
-        tradeProducts = sort(tradeProducts, "desc");
-        TradeContract tradeContract = calculateTradeContract(contract, tradeProducts.get(0));
-        List<Rule> rules = generateRuleResult(contract, tradeProducts);
-        System.out.println(masterContract + "最新合约交易数据");
-        System.out.println(GsonHelper.gsonSerializer(tradeContract));
-        System.out.println(masterContract + "最新一交易日数据");
-        System.out.println(GsonHelper.gsonSerializer(tradeProducts.get(0)));
-        CommonHelper.printList(rules, masterContract + "海龟法则计算结果");
-        writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, masterContract, path);
     }
 }

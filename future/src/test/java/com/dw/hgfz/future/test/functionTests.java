@@ -3,6 +3,7 @@ package com.dw.hgfz.future.test;
 import com.dw.hgfz.common.utils.CommonHelper;
 import com.dw.hgfz.common.utils.RandomHelper;
 import com.dw.hgfz.core.base.calculator;
+import com.dw.hgfz.core.base.processor;
 import com.dw.hgfz.core.spec.Order;
 import com.dw.hgfz.core.spec.TradeProduct;
 import org.junit.Test;
@@ -17,21 +18,21 @@ import java.util.List;
 public class functionTests {
 
     @Test
-    public void testCalculateSort() throws Exception {
+    public void testProcessorSort() throws Exception {
         List<TradeProduct> tradeProducts = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             TradeProduct tradeProduct = new TradeProduct();
             tradeProduct.setDate("2015-05-" + String.format("%02d", RandomHelper.randomInt(31)));
             tradeProducts.add(i, tradeProduct);
         }
-        tradeProducts = calculator.sort(tradeProducts, null);
+        tradeProducts = processor.sort(tradeProducts, null);
         for (int i = 0; i < 5; i++) {
             if (i == 4) continue;
             assert Long.parseLong(tradeProducts.get(i).getDate().replace("-", ""))
                     <= Long.parseLong(tradeProducts.get(i + 1).getDate().replace("-", ""));
         }
         CommonHelper.printList(tradeProducts, "asc order");
-        tradeProducts = calculator.sort(tradeProducts, "desc");
+        tradeProducts = processor.sort(tradeProducts, "desc");
         for (int i = 0; i < 5; i++) {
             if (i == 4) continue;
             assert Long.parseLong(tradeProducts.get(i).getDate().replace("-", ""))
