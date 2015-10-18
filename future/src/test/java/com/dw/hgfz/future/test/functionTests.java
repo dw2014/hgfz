@@ -68,16 +68,17 @@ public class functionTests {
             tradeProducts.add(i, tradeProduct);
         }
         tradeProducts = calculator.calculateTR(tradeProducts);
+        tradeProducts.remove(0);
         tradeProducts = calculator.calculateATR(tradeProducts);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 19; i++) {
             assert tradeProducts.get(i).getAtr() == 0.0;
         }
         double first20TRSum = 0.0;
         for (int i = 0; i < 20; i++) {
             first20TRSum += tradeProducts.get(i).getTr();
         }
-        assert tradeProducts.get(20).getAtr() == first20TRSum / 20;
-        for (int i = 21; i < tradeProducts.size(); i++) {
+        assert tradeProducts.get(19).getAtr() == first20TRSum / 20;
+        for (int i = 20; i < tradeProducts.size(); i++) {
             assert tradeProducts.get(i).getAtr() == (19 * tradeProducts.get(i - 1).getAtr() + tradeProducts.get(i).getTr()) / 20;
         }
         CommonHelper.printList(tradeProducts, "TR and ATR are calculated and validated.");

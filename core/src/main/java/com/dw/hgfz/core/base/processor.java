@@ -16,7 +16,11 @@ import org.w3c.dom.NodeList;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +36,17 @@ public class processor {
         sortList<TradeProduct> sortList = new sortList<>();
         sortList.sort(tradeProducts, "getDate", sort);
         return tradeProducts;
+    }
+
+    public static String setDateRange() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        Date dateNow = new Date(System.currentTimeMillis());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateNow);
+        cal.add(Calendar.DATE, -100);
+        String begin_date = dateFormat.format(cal.getTime());
+        String end_date = dateFormat.format(dateNow);
+        return String.format("&begin_date=%s&end_date=%s", begin_date, end_date);
     }
 
     public static List<TradeProduct> parseFutureResults(String results) throws Exception {
@@ -78,6 +93,7 @@ public class processor {
         List<TradeProduct> tradeProducts = parseFutureResults(results);
         tradeProducts = sort(tradeProducts, null);
         tradeProducts = calculator.calculateTR(tradeProducts);
+        tradeProducts.remove(0);//first tr is always 0, cause an error in calculate atr
         tradeProducts = calculator.calculateATR(tradeProducts);
         tradeProducts = sort(tradeProducts, "desc");
         TradeContract tradeContract = calculator.calculateTradeContract(contract, tradeProducts.get(0));
@@ -97,6 +113,7 @@ public class processor {
         List<TradeProduct> tradeProducts = parseStockResults(results);
         tradeProducts = sort(tradeProducts, null);
         tradeProducts = calculator.calculateTR(tradeProducts);
+        tradeProducts.remove(0);//first tr is always 0, cause an error in calculate atr
         tradeProducts = calculator.calculateATR(tradeProducts);
         tradeProducts = sort(tradeProducts, "desc");
         TradeContract tradeContract = calculator.calculateTradeContract(contract, tradeProducts.get(0));

@@ -36,14 +36,13 @@ public class calculator {
     public static List<TradeProduct> calculateATR(List<TradeProduct> tradeProducts) {
         assert tradeProducts.size() > 20;
         double tmpATR = 0;
-        TradeProduct tmpUnit = tradeProducts.get(20);
+        TradeProduct tmpUnit = tradeProducts.get(19);
         for (int i = 0; i < 20; i++) {
             tmpATR += tradeProducts.get(i).getTr();
         }
         tmpUnit.setAtr(tmpATR / 20);
-        tradeProducts.set(20, tmpUnit);
+        tradeProducts.set(19, tmpUnit);
         for (int i = 20; i < tradeProducts.size(); i++) {
-            if (i == 20) continue;
             TradeProduct unit = tradeProducts.get(i);
             unit.setAtr((19 * tradeProducts.get(i - 1).getAtr() + unit.getTr()) / 20);
             tradeProducts.set(i, unit);

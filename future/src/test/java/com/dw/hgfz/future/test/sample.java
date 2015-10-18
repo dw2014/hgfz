@@ -36,7 +36,7 @@ public class sample {
 
     @Test
     public void sampleStockCalculate() throws Exception {
-        String results = ApacheClient.executeGet(ConfigHelper.getSetting("stockDataURI") + "sh601600&begin_date=20150601&end_date=20151016");
+        String results = ApacheClient.executeGet(ConfigHelper.getSetting("stockDataURI") + "sh601600" + processor.setDateRange());
         processor.processStock(results, "sh601600", ConfigHelper.getSetting("logPath"));
     }
 }

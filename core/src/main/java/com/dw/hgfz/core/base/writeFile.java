@@ -24,9 +24,10 @@ public class writeFile {
     public static void writeToFile(
             TradeContract tradeContract, TradeProduct latestUnit, List<Rule> rules,
             String market, String path) throws Exception {
-        path = path + "\\" + (market.length() > 6 ? "stock" : "future") + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".txt ";
+        path = path + "\\" + (market.length() < 7 ? "future" : "stock") +
+                new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis())) + ".txt ";
         PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
-        if (market.length() > 6) {
+        if (market.length() < 7) {
             writer.println(market + "最新合约交易数据");
             writer.println(GsonHelper.gsonSerializer(tradeContract));
         }
