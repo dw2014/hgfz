@@ -88,8 +88,9 @@ public class processor {
         return tradeProducts;
     }
 
-    public static void processFuture(String results, String masterContract, String path) throws Exception {
-        Contract contract = readContracts.getContract(masterContract);
+    public static String processFuture(String results, String futureCode, String path, boolean writeToFile)
+            throws Exception {
+        Contract contract = readContracts.getContract(futureCode);
         List<TradeProduct> tradeProducts = parseFutureResults(results);
         tradeProducts = sort(tradeProducts, null);
         tradeProducts = calculator.calculateTR(tradeProducts);
@@ -98,15 +99,21 @@ public class processor {
         tradeProducts = sort(tradeProducts, "desc");
         TradeContract tradeContract = calculator.calculateTradeContract(contract, tradeProducts.get(0));
         List<Rule> rules = calculator.generateRuleResult(contract, tradeProducts);
-        System.out.println(masterContract + "最新合约交易数据");
+        System.out.println(futureCode + "最新合约交易数据");
         System.out.println(GsonHelper.gsonSerializer(tradeContract));
-        System.out.println(masterContract + "最新一交易日数据");
+        System.out.println(futureCode + "最新一交易日数据");
         System.out.println(GsonHelper.gsonSerializer(tradeProducts.get(0)));
-        CommonHelper.printList(rules, masterContract + "海龟法则计算结果");
-        writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, masterContract, path);
+        CommonHelper.printList(rules, futureCode + "海龟法则计算结果");
+        if (writeToFile) {
+            writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, futureCode, path);
+            return null;
+        } else {
+            return writeMessage.writeDisplayMessage(tradeContract, tradeProducts.get(0), rules, futureCode);
+        }
     }
 
-    public static void processStock(String results, String stockCode, String path) throws Exception {
+    public static String processStock(String results, String stockCode, String path, boolean writeToFile)
+            throws Exception {
         Contract contract = new Contract();
         contract.setMasterContract(stockCode);
         contract.setMinPriceFluctuation(0.01);
@@ -121,6 +128,11 @@ public class processor {
         System.out.println(stockCode + "最新一交易日数据");
         System.out.println(GsonHelper.gsonSerializer(tradeProducts.get(0)));
         CommonHelper.printList(rules, stockCode + "海龟法则计算结果");
-        writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, stockCode, path);
+        if (writeToFile) {
+            writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, stockCode, path);
+            return null;
+        } else {
+            return writeMessage.writeDisplayMessage(tradeContract, tradeProducts.get(0), rules, stockCode);
+        }
     }
 }
