@@ -19,8 +19,8 @@ public class sample {
     public void sampleFutureCalculate() throws Exception {
         for (int i = 0; i < readContracts.CONTRACTS.size(); i++) {
             String contract = readContracts.CONTRACTS.get(i).getMasterContract();
-            String results = ApacheClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
-            processor.processFuture(results, contract, ConfigHelper.getSetting("logPath"), true);
+            //String results = ApacheClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
+            processor.processFuture(contract, ConfigHelper.getSetting("logPath"), true);
         }
     }
 
@@ -36,7 +36,7 @@ public class sample {
 
     @Test
     public void sampleStockCalculate() throws Exception {
-        String results = ApacheClient.executeGet(ConfigHelper.getSetting("stockDataURI") + "sh601600" + processor.setDateRange());
-        processor.processStock(results, "sh601600", ConfigHelper.getSetting("logPath"), true);
+        //String results = ApacheClient.executeGet(ConfigHelper.getSetting("stockDataURI") + "sh601600" + processor.setDateRange());
+        processor.processStock("sh601600", ConfigHelper.getSetting("logPath"), true);
     }
 }

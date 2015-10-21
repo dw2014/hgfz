@@ -1,6 +1,8 @@
 package com.dw.hgfz.core.base;
 
+import com.dw.hgfz.common.httpclient.ApacheClient;
 import com.dw.hgfz.common.utils.CommonHelper;
+import com.dw.hgfz.common.utils.ConfigHelper;
 import com.dw.hgfz.common.utils.GsonHelper;
 import com.dw.hgfz.common.xmlparser.DOMParser;
 import com.dw.hgfz.core.spec.Contract;
@@ -8,6 +10,7 @@ import com.dw.hgfz.core.spec.Rule;
 import com.dw.hgfz.core.spec.TradeContract;
 import com.dw.hgfz.core.spec.TradeProduct;
 import com.google.gson.JsonArray;
+import org.omg.CORBA.PRIVATE_MEMBER;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -28,8 +31,19 @@ import java.util.List;
  */
 public class processor {
 
+    private static final String FUTUREDATAURIKEY = "futureDataURI";
+    private static final String STOCKDATAURIKEY = "stockDataURI";
+
     private processor() {
 
+    }
+
+    public static String getRawResults(String code, boolean isFuture) throws Exception {
+        if (isFuture) {
+            return ApacheClient.executeGet(readConfigs.getConfig(FUTUREDATAURIKEY) + code);
+        } else {
+            return ApacheClient.executeGet(readConfigs.getConfig(STOCKDATAURIKEY) + code + setDateRange());
+        }
     }
 
     public static List<TradeProduct> sort(List<TradeProduct> tradeProducts, String sort) {
@@ -88,8 +102,9 @@ public class processor {
         return tradeProducts;
     }
 
-    public static String processFuture(String results, String futureCode, String path, boolean writeToFile)
+    public static String processFuture(String futureCode, String path, boolean writeToFile)
             throws Exception {
+        String results = getRawResults(futureCode, true);
         Contract contract = readContracts.getContract(futureCode);
         List<TradeProduct> tradeProducts = parseFutureResults(results);
         tradeProducts = sort(tradeProducts, null);
@@ -112,8 +127,9 @@ public class processor {
         }
     }
 
-    public static String processStock(String results, String stockCode, String path, boolean writeToFile)
+    public static String processStock(String stockCode, String path, boolean writeToFile)
             throws Exception {
+        String results = getRawResults(stockCode, false);
         Contract contract = new Contract();
         contract.setMasterContract(stockCode);
         contract.setMinPriceFluctuation(0.01);

@@ -20,7 +20,6 @@ public final class readContracts {
     public static final List<Contract> CONTRACTS = new ArrayList<>();
 
     static {
-
         try {
             ClassLoader loader = Test.class.getClassLoader();
             InputStream is = loader.getResourceAsStream("contracts.xml");

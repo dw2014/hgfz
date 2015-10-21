@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<configs>
+    <config key="futureDataURI"
+            value="http://stock2.finance.sina.com.cn/futures/api/json.php/IndexService.getInnerFuturesDailyKLine?symbol="/>
+    <config key="stockDataURI"
+            value="http://biz.finance.sina.com.cn/stock/flash_hq/kline_data.php?symbol="/>
+</configs>
