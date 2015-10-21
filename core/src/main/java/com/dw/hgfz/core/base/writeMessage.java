@@ -28,6 +28,7 @@ public class writeMessage {
         builder.append(GsonHelper.gsonSerializer(latestUnit)).append("\n");
         builder.append(market + "海龟法则计算结果").append("\n");
         for (int i = 0; i < rules.size(); i++) {
+            if (market.length() > 6 && i % 2 != 0) continue;
             builder.append(GsonHelper.gsonSerializer(rules.get(i))).append("\n");
         }
         return builder.toString();

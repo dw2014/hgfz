@@ -35,6 +35,7 @@ public class writeFile {
         writer.println(GsonHelper.gsonSerializer(latestUnit));
         writer.println(market + "海龟法则计算结果");
         for (int i = 0; i < rules.size(); i++) {
+            if (market.length() > 6 && i % 2 != 0) continue;
             writer.println(GsonHelper.gsonSerializer(rules.get(i)));
         }
         writer.println();
