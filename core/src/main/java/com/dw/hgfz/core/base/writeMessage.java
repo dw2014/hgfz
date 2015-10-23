@@ -21,12 +21,12 @@ public class writeMessage {
             throws Exception {
         StringBuilder builder = new StringBuilder();
         if (market.length() < 7) {
-            builder.append(market + "最新合约交易数据").append("\n");
+            builder.append(market + " latest_contract_data").append("\n");
             builder.append(GsonHelper.gsonSerializer(tradeContract)).append("\n");
         }
-        builder.append(market + GsonHelper.gsonSerializer("最近一交易日数据")).append("\n");
+        builder.append(market + " latest_trade_data").append("\n");
         builder.append(GsonHelper.gsonSerializer(latestUnit)).append("\n");
-        builder.append(market + GsonHelper.gsonSerializer("海龟法则计算结果")).append("\n");
+        builder.append(market + " rule_calculation_result").append("\n");
         for (int i = 0; i < rules.size(); i++) {
             if (market.length() > 6 && i % 2 != 0) continue;
             builder.append(GsonHelper.gsonSerializer(rules.get(i))).append("\n");
