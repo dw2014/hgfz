@@ -24,9 +24,9 @@ public class writeMessage {
             builder.append(market + "最新合约交易数据").append("\n");
             builder.append(GsonHelper.gsonSerializer(tradeContract)).append("\n");
         }
-        builder.append(market + "最近一交易日数据").append("\n");
+        builder.append(market + GsonHelper.gsonSerializer("最近一交易日数据")).append("\n");
         builder.append(GsonHelper.gsonSerializer(latestUnit)).append("\n");
-        builder.append(market + "海龟法则计算结果").append("\n");
+        builder.append(market + GsonHelper.gsonSerializer("海龟法则计算结果")).append("\n");
         for (int i = 0; i < rules.size(); i++) {
             if (market.length() > 6 && i % 2 != 0) continue;
             builder.append(GsonHelper.gsonSerializer(rules.get(i))).append("\n");

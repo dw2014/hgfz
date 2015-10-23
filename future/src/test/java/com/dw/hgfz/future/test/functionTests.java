@@ -4,6 +4,8 @@ import com.dw.hgfz.common.utils.CommonHelper;
 import com.dw.hgfz.common.utils.RandomHelper;
 import com.dw.hgfz.core.base.calculator;
 import com.dw.hgfz.core.base.processor;
+import com.dw.hgfz.core.base.readConfigs;
+import com.dw.hgfz.core.base.readContracts;
 import com.dw.hgfz.core.spec.Order;
 import com.dw.hgfz.core.spec.TradeProduct;
 import org.junit.Test;
@@ -167,5 +169,19 @@ public class functionTests {
                 new BigDecimal("110").doubleValue();
         assert calculator.calculatePriceFluctuation(new BigDecimal("106.66"), 10).doubleValue() ==
                 new BigDecimal("110").doubleValue();
+    }
+
+    @Test
+    public void testReadConfigs() throws Exception {
+        assert readConfigs.CONFIGS.size() == 0;
+        readConfigs.getConfig(null);
+        assert readConfigs.CONFIGS.size() > 0;
+    }
+
+    @Test
+    public void testReadContracts() throws Exception {
+        assert readContracts.CONTRACTS.size() == 0;
+        readContracts.getContract(null);
+        assert readContracts.CONTRACTS.size() > 0;
     }
 }

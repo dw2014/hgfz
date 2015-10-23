@@ -2,7 +2,6 @@ package com.dw.hgfz.core.base;
 
 import com.dw.hgfz.common.httpclient.ApacheClient;
 import com.dw.hgfz.common.utils.CommonHelper;
-import com.dw.hgfz.common.utils.ConfigHelper;
 import com.dw.hgfz.common.utils.GsonHelper;
 import com.dw.hgfz.common.xmlparser.DOMParser;
 import com.dw.hgfz.core.spec.Contract;
@@ -10,7 +9,6 @@ import com.dw.hgfz.core.spec.Rule;
 import com.dw.hgfz.core.spec.TradeContract;
 import com.dw.hgfz.core.spec.TradeProduct;
 import com.google.gson.JsonArray;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,10 +19,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by dw on 10/18/2015.
@@ -150,5 +145,28 @@ public class processor {
         } else {
             return writeMessage.writeDisplayMessage(tradeContract, tradeProducts.get(0), rules, stockCode);
         }
+    }
+
+    private static Integer TryParseTradeCode(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException ex) {
+            return -1;
+        }
+    }
+
+    public static String process(String code, String path, boolean writeToFile) throws Exception {
+        if (code.length() == 8 && (code.startsWith("sz") || code.startsWith("sh"))) {
+            return processStock(code, path, writeToFile);
+        }
+        int tradeCode = TryParseTradeCode(code);
+        if (tradeCode < 0) {
+            return processFuture(code.toUpperCase(), path, writeToFile);
+        } else if (tradeCode > 600000) {
+            return processStock("sh" + code, path, writeToFile);
+        } else if (tradeCode > 000001) {
+            return processStock("sz" + code, path, writeToFile);
+        }
+        throw new InputMismatchException();
     }
 }

@@ -11,12 +11,12 @@ public class Rule {
 
     @SerializedName("入市系统")
     private String system;
-    @SerializedName("商品合约")
-    private String market;
+    @SerializedName("交易代码")
+    private String tradeCode;
     @SerializedName("头寸规模")
     private int position;
-    @SerializedName("多空行情")
-    private String shortOrLong;
+    @SerializedName("市场行情")
+    private String marketQuotation;
     @SerializedName("入市价位")
     private List<Order> orders;
     @SerializedName("退出价位")
@@ -30,12 +30,12 @@ public class Rule {
         this.system = value;
     }
 
-    public String getMarket() {
-        return this.market;
+    public String getTradeCode() {
+        return this.tradeCode;
     }
 
-    public void setMarket(String value) {
-        this.market = value;
+    public void setTradeCode(String value) {
+        this.tradeCode = value;
     }
 
     public int getPosition() {
@@ -46,12 +46,12 @@ public class Rule {
         this.position = value;
     }
 
-    public String getShortOrLong() {
-        return this.shortOrLong;
+    public String getMarketQuotation() {
+        return this.marketQuotation;
     }
 
-    public void setShortOrLong(String value) {
-        this.shortOrLong = value;
+    public void setMarketQuotation(String value) {
+        this.marketQuotation = value;
     }
 
     public List<Order> getOrders() {
