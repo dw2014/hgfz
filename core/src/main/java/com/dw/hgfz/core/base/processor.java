@@ -91,6 +91,7 @@ public class processor {
                 tradeProduct.setHigh(Double.parseDouble(eElement.getAttribute("h")));
                 tradeProduct.setClose(Double.parseDouble(eElement.getAttribute("c")));
                 tradeProduct.setLow(Double.parseDouble(eElement.getAttribute("l")));
+                tradeProduct.setVolume(Long.parseLong(eElement.getAttribute("v")));
                 tradeProducts.add(tradeProduct);
             }
         }

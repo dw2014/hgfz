@@ -7,7 +7,12 @@ import com.dw.hgfz.core.base.processor;
 import com.dw.hgfz.core.base.readConfigs;
 import com.dw.hgfz.core.base.readContracts;
 import com.dw.hgfz.core.spec.Order;
+import com.dw.hgfz.core.spec.Rule;
+import com.dw.hgfz.core.spec.TradeContract;
 import com.dw.hgfz.core.spec.TradeProduct;
+import com.dw.hgfz.core.utils.ruleSerializer;
+import com.dw.hgfz.core.utils.tradeContractSerializer;
+import com.dw.hgfz.core.utils.tradeProductSerializer;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -81,7 +86,13 @@ public class functionTests {
         }
         assert tradeProducts.get(19).getAtr() == first20TRSum / 20;
         for (int i = 20; i < tradeProducts.size(); i++) {
-            assert tradeProducts.get(i).getAtr() == (19 * tradeProducts.get(i - 1).getAtr() + tradeProducts.get(i).getTr()) / 20;
+            if (i == tradeProducts.size() - 1) {
+                double temp = (19 * tradeProducts.get(i - 1).getAtr() + tradeProducts.get(i).getTr()) / 20;
+                assert tradeProducts.get(i).getAtr() == new BigDecimal(String.valueOf(temp))
+                        .setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+            } else {
+                assert tradeProducts.get(i).getAtr() == (19 * tradeProducts.get(i - 1).getAtr() + tradeProducts.get(i).getTr()) / 20;
+            }
         }
         CommonHelper.printList(tradeProducts, "TR and ATR are calculated and validated.");
     }
@@ -183,5 +194,49 @@ public class functionTests {
         assert readContracts.CONTRACTS.size() == 0;
         readContracts.getContract(null);
         assert readContracts.CONTRACTS.size() > 0;
+    }
+
+    @Test
+    public void testCustomRuleSerializer() throws Exception {
+        Rule rule = new Rule();
+        rule.setSystem("system");
+        rule.setPosition(100);
+        rule.setMarketQuotation("market quotation");
+        rule.setTradeCode("trade code");
+        rule.setQuitOrder(1.11);
+        List<Order> orders = new ArrayList<>();
+        Order order = new Order();
+        order.setOrder(2.22);
+        order.setStopOrder(3.33);
+        orders.add(order);
+        rule.setOrders(orders);
+        System.out.println(ruleSerializer.toJson(rule));
+    }
+
+    @Test
+    public void testCustomTradeContractSerializer() throws Exception {
+        TradeContract tradeContract = new TradeContract();
+        tradeContract.setDate("2015-10-23");
+        tradeContract.setProductName("product name");
+        tradeContract.setPrice(1.11);
+        tradeContract.setMarginPrice(0.02);
+        tradeContract.setPricePerUnit(0.05);
+        tradeContract.setUnitsPerContract(10);
+        tradeContract.setPricePerMinPriceFluctuation(20.22);
+        System.out.println(tradeContractSerializer.toJson(tradeContract));
+    }
+
+    @Test
+    public void testCustomTradeProductSerializer() throws Exception {
+        TradeProduct tradeProduct = new TradeProduct();
+        tradeProduct.setDate("2015-10-23");
+        tradeProduct.setOpen(2.22);
+        tradeProduct.setHigh(2.44);
+        tradeProduct.setLow(2.11);
+        tradeProduct.setClose(2.38);
+        tradeProduct.setVolume(8888);
+        tradeProduct.setTr(0.17);
+        tradeProduct.setAtr(0.23);
+        System.out.println(tradeProductSerializer.toJson(tradeProduct));
     }
 }

@@ -1,6 +1,7 @@
 package com.dw.hgfz.common.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Created by dw on 9/7/2015.
@@ -17,7 +18,7 @@ public class GsonHelper {
     }
 
     public static String gsonSerializer(Object obj) throws Exception {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(obj);
     }
 

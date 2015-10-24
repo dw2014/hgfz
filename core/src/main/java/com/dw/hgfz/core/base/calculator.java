@@ -45,6 +45,10 @@ public class calculator {
         for (int i = 20; i < tradeProducts.size(); i++) {
             TradeProduct unit = tradeProducts.get(i);
             unit.setAtr((19 * tradeProducts.get(i - 1).getAtr() + unit.getTr()) / 20);
+            if (i == tradeProducts.size() - 1) {
+                unit.setTr(new BigDecimal(String.valueOf(unit.getTr())).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+                unit.setAtr(new BigDecimal(String.valueOf(unit.getAtr())).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+            }
             tradeProducts.set(i, unit);
         }
         return tradeProducts;
