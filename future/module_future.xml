@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_future" default="compile.module.future">
+  <dirname property="module.future.basedir" file="${ant.file.module_future}"/>
+  
+  <property name="module.jdk.home.future" value="${jdk.home.1.7}"/>
+  <property name="module.jdk.bin.future" value="${jdk.bin.1.7}"/>
+  <property name="module.jdk.classpath.future" value="jdk.classpath.1.7"/>
+  
+  <property name="compiler.args.future" value="-encoding GBK -source 1.7 ${compiler.args}"/>
+  
+  <property name="future.output.dir" value="${module.future.basedir}/build/classes/main"/>
+  <property name="future.testoutput.dir" value="${module.future.basedir}/build/classes/test"/>
+  
+  <path id="future.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="future.module.production.classpath">
+    <path refid="${module.jdk.classpath.future}"/>
+    <pathelement location="${common.output.dir}"/>
+    <path refid="library.gradle:_commons-httpclient:commons-httpclient:3.1.classpath"/>
+    <path refid="library.gradle:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.gradle:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.gradle:_org.apache.commons:commons-lang3:3.0.classpath"/>
+    <path refid="library.gradle:_org.apache.httpcomponents:httpcore:4.3.2.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_commons-logging:commons-logging:1.0.4.classpath"/>
+    <path refid="library.gradle:_commons-codec:commons-codec:1.2.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <pathelement location="${core.output.dir}"/>
+  </path>
+  
+  <path id="future.runtime.production.module.classpath">
+    <pathelement location="${future.output.dir}"/>
+    <path refid="common.runtime.production.module.classpath"/>
+    <path refid="core.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.3.1.classpath"/>
+  </path>
+  
+  <path id="future.module.classpath">
+    <path refid="${module.jdk.classpath.future}"/>
+    <pathelement location="${future.output.dir}"/>
+    <pathelement location="${common.testoutput.dir}"/>
+    <pathelement location="${common.output.dir}"/>
+    <path refid="library.gradle:_commons-httpclient:commons-httpclient:3.1.classpath"/>
+    <path refid="library.gradle:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.gradle:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.gradle:_org.apache.commons:commons-lang3:3.0.classpath"/>
+    <path refid="library.gradle:_org.apache.httpcomponents:httpcore:4.3.2.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_commons-logging:commons-logging:1.0.4.classpath"/>
+    <path refid="library.gradle:_commons-codec:commons-codec:1.2.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <pathelement location="${core.testoutput.dir}"/>
+    <pathelement location="${core.output.dir}"/>
+  </path>
+  
+  <path id="future.runtime.module.classpath">
+    <pathelement location="${future.testoutput.dir}"/>
+    <pathelement location="${future.output.dir}"/>
+    <path refid="common.runtime.module.classpath"/>
+    <path refid="core.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.3.1.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.future">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.future">
+    <patternset refid="excluded.from.module.future"/>
+  </patternset>
+  
+  <path id="future.module.test.sourcepath">
+    <dirset dir="${module.future.basedir}">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.future" depends="compile.module.future.production,compile.module.future.tests" description="Compile module future"/>
+  
+  <target name="compile.module.future.production" depends="register.custom.compilers,compile.module.common,compile.module.core" description="Compile module future; production classes"/>
+  
+  <target name="compile.module.future.tests" depends="register.custom.compilers,compile.module.future.production" description="compile module future; test classes" unless="skip.tests">
+    <mkdir dir="${future.testoutput.dir}"/>
+    <javac2 destdir="${future.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.future}/javac">
+      <compilerarg line="${compiler.args.future}"/>
+      <bootclasspath refid="future.module.bootclasspath"/>
+      <classpath refid="future.module.classpath"/>
+      <src refid="future.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.future"/>
+    </javac2>
+    
+    <copy todir="${future.testoutput.dir}">
+      <fileset dir="${module.future.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.future.basedir}/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.future" description="cleanup module">
+    <delete dir="${future.output.dir}"/>
+    <delete dir="${future.testoutput.dir}"/>
+  </target>
+</project>

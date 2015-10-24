@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_hgfz" default="compile.module.hgfz">
+  <dirname property="module.hgfz.basedir" file="${ant.file.module_hgfz}"/>
+  
+  <property name="module.jdk.home.hgfz" value="${jdk.home.1.7}"/>
+  <property name="module.jdk.bin.hgfz" value="${jdk.bin.1.7}"/>
+  <property name="module.jdk.classpath.hgfz" value="jdk.classpath.1.7"/>
+  
+  <property name="compiler.args.hgfz" value="-encoding GBK -source 1.7 ${compiler.args}"/>
+  
+  <property name="hgfz.output.dir" value="${module.hgfz.basedir}/build/classes/main"/>
+  <property name="hgfz.testoutput.dir" value="${module.hgfz.basedir}/build/classes/test"/>
+  
+  <path id="hgfz.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="hgfz.module.production.classpath">
+    <path refid="${module.jdk.classpath.hgfz}"/>
+  </path>
+  
+  <path id="hgfz.runtime.production.module.classpath">
+    <pathelement location="${hgfz.output.dir}"/>
+  </path>
+  
+  <path id="hgfz.module.classpath">
+    <path refid="${module.jdk.classpath.hgfz}"/>
+    <pathelement location="${hgfz.output.dir}"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="hgfz.runtime.module.classpath">
+    <pathelement location="${hgfz.testoutput.dir}"/>
+    <pathelement location="${hgfz.output.dir}"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.hgfz">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.hgfz">
+    <patternset refid="excluded.from.module.hgfz"/>
+  </patternset>
+  
+  
+  <target name="compile.module.hgfz" depends="compile.module.hgfz.production,compile.module.hgfz.tests" description="Compile module hgfz"/>
+  
+  <target name="compile.module.hgfz.production" depends="register.custom.compilers" description="Compile module hgfz; production classes"/>
+  
+  <target name="compile.module.hgfz.tests" depends="register.custom.compilers,compile.module.hgfz.production" description="compile module hgfz; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.hgfz" description="cleanup module">
+    <delete dir="${hgfz.output.dir}"/>
+    <delete dir="${hgfz.testoutput.dir}"/>
+  </target>
+</project>

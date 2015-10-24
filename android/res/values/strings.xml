@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">海龟法则计算器</string>
+    <string name="edit_message">输入期货/股票代码</string>
+    <string name="button_send">开始计算</string>
+    <string name="action_settings">设置</string>
+    <string name="title_activity_main">海龟法则</string>
+    <string name="latest_contract_data">最新合约交易数据</string>
+    <string name="latest_trade_data">最近一交易日数据</string>
+    <string name="rule_calculation_result">海龟法则计算结果</string>
+</resources>
