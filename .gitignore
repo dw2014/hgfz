@@ -94,3 +94,5 @@ erl_crash.dump
 dump.rdb
 
 local.properties
+
+*.apk
