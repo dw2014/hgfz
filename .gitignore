@@ -6,6 +6,7 @@
 # Build outputs
 **/build/**
 **/target/**
+**/android/out/
 build/
 target/
 /build.log
