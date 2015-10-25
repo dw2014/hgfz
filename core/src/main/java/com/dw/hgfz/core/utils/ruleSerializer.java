@@ -13,7 +13,7 @@ public class ruleSerializer implements JsonSerializer<Rule> {
     @Override
     public JsonElement serialize(Rule rule, Type type, JsonSerializationContext context) {
         JsonObject object = new JsonObject();
-        object.add("交易代码", context.serialize(rule.getTradeCode()));
+        object.add("合约代码", context.serialize(rule.getContractCode()));
         object.add("入市系统", context.serialize(rule.getSystem()));
         object.add("市场行情", context.serialize(rule.getMarketQuotation()));
         object.add("入市价位", context.serialize(rule.getOrders()));

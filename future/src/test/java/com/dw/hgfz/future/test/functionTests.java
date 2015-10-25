@@ -202,7 +202,7 @@ public class functionTests {
         rule.setSystem("system");
         rule.setPosition(100);
         rule.setMarketQuotation("market quotation");
-        rule.setTradeCode("trade code");
+        rule.setContractCode("contract code");
         rule.setQuitOrder(1.11);
         List<Order> orders = new ArrayList<>();
         Order order = new Order();

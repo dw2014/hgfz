@@ -18,7 +18,7 @@ public class sample {
     @Test
     public void sampleFutureCalculate() throws Exception {
         for (int i = 0; i < readContracts.CONTRACTS.size(); i++) {
-            String contract = readContracts.CONTRACTS.get(i).getMasterContract();
+            String contract = readContracts.CONTRACTS.get(i).getContractCode();
             //String results = ApacheClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
             processor.processFuture(contract, ConfigHelper.getSetting("logPath"), true);
         }

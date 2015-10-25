@@ -18,8 +18,17 @@ public class GsonHelper {
     }
 
     public static String gsonSerializer(Object obj) throws Exception {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(obj);
+        return gsonSerializer(obj, true);
+    }
+
+    public static String gsonSerializer(Object obj, boolean prettyPrint) throws Exception {
+        if (prettyPrint) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(obj);
+        } else {
+            Gson gson = new Gson();
+            return gson.toJson(obj);
+        }
     }
 
 }

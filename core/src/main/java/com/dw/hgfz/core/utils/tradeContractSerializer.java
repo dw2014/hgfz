@@ -19,7 +19,7 @@ public class tradeContractSerializer implements JsonSerializer<TradeContract> {
         object.add("保证金价格/手", context.serialize(tradeContract.getMarginPrice()));
         object.add("价格/交易单位", context.serialize(tradeContract.getPricePerUnit()));
         object.add("交易单位/手", context.serialize(tradeContract.getUnitsPerContract()));
-        object.add("价格/最小变动价位", context.serialize(tradeContract.getPricePerMinPriceFluctuation()));
+        object.add("价格/最小价位变动", context.serialize(tradeContract.getPricePerMinPriceFluctuation()));
         return object;
     }
 

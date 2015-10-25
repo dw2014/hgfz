@@ -1,4 +1,4 @@
-package com.dw.hgfz.core.base;
+package com.dw.hgfz.common.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

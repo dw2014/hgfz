@@ -11,8 +11,8 @@ public class Rule {
 
     @SerializedName("入市系统")
     private String system;
-    @SerializedName("交易代码")
-    private String tradeCode;
+    @SerializedName("合约代码")
+    private String contractCode;
     @SerializedName("头寸规模")
     private int position;
     @SerializedName("市场行情")
@@ -30,12 +30,12 @@ public class Rule {
         this.system = value;
     }
 
-    public String getTradeCode() {
-        return this.tradeCode;
+    public String getContractCode() {
+        return this.contractCode;
     }
 
-    public void setTradeCode(String value) {
-        this.tradeCode = value;
+    public void setContractCode(String value) {
+        this.contractCode = value;
     }
 
     public int getPosition() {

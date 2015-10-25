@@ -1,6 +1,7 @@
 package com.dw.hgfz.core.base;
 
 import com.dw.hgfz.core.spec.*;
+import com.dw.hgfz.core.utils.constStrings;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,11 +15,6 @@ public class calculator {
     private calculator() {
 
     }
-
-    private static final String Day20Breaks = "20日突破";
-    private static final String Day55Breaks = "55日突破";
-    private static final String BuyLong = "做多";
-    private static final String BuyShort = "做空";
 
     public static List<TradeProduct> calculateTR(List<TradeProduct> tradeProducts) {
         assert tradeProducts.size() > 1;
@@ -136,10 +132,10 @@ public class calculator {
         if (tradeProducts.size() > 20) {
             highPeak20 = calculatePeakValue(tradeProducts, 20, true);
             Rule rule20long = new Rule();
-            rule20long.setSystem(Day20Breaks);
-            rule20long.setTradeCode(contract.getMasterContract());
+            rule20long.setSystem(constStrings.Day20Breaks);
+            rule20long.setContractCode(contract.getContractCode());
             rule20long.setPosition(0);//to be implemented
-            rule20long.setMarketQuotation(BuyLong);
+            rule20long.setMarketQuotation(constStrings.BuyLong);
             rule20long.setOrders(calculateOrders(
                     highPeak20, tradeProducts.get(0).getAtr(), contract.getMinPriceFluctuation(), true));
             rule20long.setQuitOrder(calculatePeakValue(tradeProducts, 10, false));
@@ -147,10 +143,10 @@ public class calculator {
 
             lowPeak20 = calculatePeakValue(tradeProducts, 20, false);
             Rule rule20short = new Rule();
-            rule20short.setSystem(Day20Breaks);
-            rule20short.setTradeCode(contract.getMasterContract());
+            rule20short.setSystem(constStrings.Day20Breaks);
+            rule20short.setContractCode(contract.getContractCode());
             rule20short.setPosition(0);//to be implemented
-            rule20short.setMarketQuotation(BuyShort);
+            rule20short.setMarketQuotation(constStrings.BuyShort);
             rule20short.setOrders(calculateOrders(
                     lowPeak20, tradeProducts.get(0).getAtr(), contract.getMinPriceFluctuation(), false));
             rule20short.setQuitOrder(calculatePeakValue(tradeProducts, 10, true));
@@ -159,10 +155,10 @@ public class calculator {
         if (tradeProducts.size() > 55) {
             highPeak55 = calculatePeakValue(tradeProducts, 55, true);
             Rule rule55long = new Rule();
-            rule55long.setSystem(Day55Breaks);
-            rule55long.setTradeCode(contract.getMasterContract());
+            rule55long.setSystem(constStrings.Day55Breaks);
+            rule55long.setContractCode(contract.getContractCode());
             rule55long.setPosition(0);//to be implemented
-            rule55long.setMarketQuotation(BuyLong);
+            rule55long.setMarketQuotation(constStrings.BuyLong);
             rule55long.setOrders(calculateOrders(
                     highPeak55, tradeProducts.get(0).getAtr(), contract.getMinPriceFluctuation(), true));
             rule55long.setQuitOrder(calculatePeakValue(tradeProducts, 20, false));
@@ -170,10 +166,10 @@ public class calculator {
 
             lowPeak55 = calculatePeakValue(tradeProducts, 55, false);
             Rule rule55short = new Rule();
-            rule55short.setSystem(Day55Breaks);
-            rule55short.setTradeCode(contract.getMasterContract());
+            rule55short.setSystem(constStrings.Day55Breaks);
+            rule55short.setContractCode(contract.getContractCode());
             rule55short.setPosition(0);//to be implemented
-            rule55short.setMarketQuotation(BuyShort);
+            rule55short.setMarketQuotation(constStrings.BuyShort);
             rule55short.setOrders(calculateOrders(
                     lowPeak55, tradeProducts.get(0).getAtr(), contract.getMinPriceFluctuation(), false));
             rule55short.setQuitOrder(calculatePeakValue(tradeProducts, 20, true));

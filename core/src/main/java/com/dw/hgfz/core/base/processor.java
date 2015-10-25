@@ -3,11 +3,13 @@ package com.dw.hgfz.core.base;
 import com.dw.hgfz.common.httpclient.ApacheClient;
 import com.dw.hgfz.common.utils.CommonHelper;
 import com.dw.hgfz.common.utils.GsonHelper;
+import com.dw.hgfz.common.utils.sortList;
 import com.dw.hgfz.common.xmlparser.DOMParser;
 import com.dw.hgfz.core.spec.Contract;
 import com.dw.hgfz.core.spec.Rule;
 import com.dw.hgfz.core.spec.TradeContract;
 import com.dw.hgfz.core.spec.TradeProduct;
+import com.dw.hgfz.core.utils.constStrings;
 import com.google.gson.JsonArray;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -26,18 +28,15 @@ import java.util.*;
  */
 public class processor {
 
-    private static final String FUTUREDATAURIKEY = "futureDataURI";
-    private static final String STOCKDATAURIKEY = "stockDataURI";
-
     private processor() {
 
     }
 
     public static String getRawResults(String code, boolean isFuture) throws Exception {
         if (isFuture) {
-            return ApacheClient.executeGet(readConfigs.getConfig(FUTUREDATAURIKEY) + code);
+            return ApacheClient.executeGet(readConfigs.getConfig(constStrings.FutureDataURIKey) + code);
         } else {
-            return ApacheClient.executeGet(readConfigs.getConfig(STOCKDATAURIKEY) + code + setDateRange());
+            return ApacheClient.executeGet(readConfigs.getConfig(constStrings.StockDataURIKey) + code + setDateRange());
         }
     }
 
@@ -101,7 +100,9 @@ public class processor {
     public static String processFuture(String futureCode, String path, boolean writeToFile)
             throws Exception {
         String results = getRawResults(futureCode, true);
-        Contract contract = readContracts.getContract(futureCode);
+        String key = futureCode.length() == 6 ? futureCode.substring(0, 2) : futureCode.substring(0, 1);
+        Contract contract = readContracts.getContract(key);
+        contract.setContractCode(futureCode);
         List<TradeProduct> tradeProducts = parseFutureResults(results);
         tradeProducts = sort(tradeProducts, null);
         tradeProducts = calculator.calculateTR(tradeProducts);
@@ -110,11 +111,11 @@ public class processor {
         tradeProducts = sort(tradeProducts, "desc");
         TradeContract tradeContract = calculator.calculateTradeContract(contract, tradeProducts.get(0));
         List<Rule> rules = calculator.generateRuleResult(contract, tradeProducts);
-        System.out.println(futureCode + "最新合约交易数据");
+        System.out.println(futureCode + constStrings.LatestContractTradeData);
         System.out.println(GsonHelper.gsonSerializer(tradeContract));
-        System.out.println(futureCode + "最新一交易日数据");
+        System.out.println(futureCode + constStrings.LatestTradeDateData);
         System.out.println(GsonHelper.gsonSerializer(tradeProducts.get(0)));
-        CommonHelper.printList(rules, futureCode + "海龟法则计算结果");
+        CommonHelper.printList(rules, futureCode + constStrings.RuleCalculationResult);
         if (writeToFile) {
             writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, futureCode, path);
             return null;
@@ -127,7 +128,7 @@ public class processor {
             throws Exception {
         String results = getRawResults(stockCode, false);
         Contract contract = new Contract();
-        contract.setMasterContract(stockCode);
+        contract.setContractCode(stockCode);
         contract.setMinPriceFluctuation(0.01);
         List<TradeProduct> tradeProducts = parseStockResults(results);
         tradeProducts = sort(tradeProducts, null);
@@ -137,9 +138,9 @@ public class processor {
         tradeProducts = sort(tradeProducts, "desc");
         TradeContract tradeContract = calculator.calculateTradeContract(contract, tradeProducts.get(0));
         List<Rule> rules = calculator.generateRuleResult(contract, tradeProducts);
-        System.out.println(stockCode + "最新一交易日数据");
+        System.out.println(stockCode + constStrings.LatestTradeDateData);
         System.out.println(GsonHelper.gsonSerializer(tradeProducts.get(0)));
-        CommonHelper.printList(rules, stockCode + "海龟法则计算结果");
+        CommonHelper.printList(rules, stockCode + constStrings.RuleCalculationResult);
         if (writeToFile) {
             writeFile.writeToFile(tradeContract, tradeProducts.get(0), rules, stockCode, path);
             return null;
@@ -148,7 +149,7 @@ public class processor {
         }
     }
 
-    private static Integer TryParseTradeCode(String value) {
+    private static Integer TryParseCode(String value) {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException ex) {
@@ -157,17 +158,21 @@ public class processor {
     }
 
     public static String process(String code, String path, boolean writeToFile) throws Exception {
+        if (code.length() != 5 || code.length() != 6 || code.length() != 8) {
+            throw new InputMismatchException("invalid input code: " + code);
+        }
         if (code.length() == 8 && (code.startsWith("sz") || code.startsWith("sh"))) {
             return processStock(code, path, writeToFile);
+        } else if (code.length() == 5 || code.length() == 6) {
+            int tempCode = TryParseCode(code);
+            if (tempCode < 0) {
+                return processFuture(code.toUpperCase(), path, writeToFile);
+            } else if (tempCode > 600000) {
+                return processStock("sh" + code, path, writeToFile);
+            } else {
+                return processStock("sz" + code, path, writeToFile);
+            }
         }
-        int tradeCode = TryParseTradeCode(code);
-        if (tradeCode < 0) {
-            return processFuture(code.toUpperCase(), path, writeToFile);
-        } else if (tradeCode > 600000) {
-            return processStock("sh" + code, path, writeToFile);
-        } else if (tradeCode > 000001) {
-            return processStock("sz" + code, path, writeToFile);
-        }
-        throw new InputMismatchException();
+        throw new InputMismatchException("invalid input code: " + code);
     }
 }

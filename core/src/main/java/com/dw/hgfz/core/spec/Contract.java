@@ -8,13 +8,13 @@ import com.google.gson.annotations.SerializedName;
 public class Contract {
 
     @SerializedName("交易代码")
-    private String contractCode;
+    private String tradeCode;
 
     @SerializedName("交易产品")
     private String productName;
 
-    @SerializedName("主力合约")
-    private String masterContract;
+    @SerializedName("合约代码")
+    private String contractCode;
 
     @SerializedName("交易单位")
     private long unitsPerContract;
@@ -31,12 +31,12 @@ public class Contract {
     @SerializedName("平日交易保证金")
     private double normalMargin;
 
-    public String getContractCode() {
-        return this.contractCode;
+    public String getTradeCode() {
+        return this.tradeCode;
     }
 
-    public void setContractCode(String value) {
-        this.contractCode = value;
+    public void setTradeCode(String value) {
+        this.tradeCode = value;
     }
 
     public String getProductName() {
@@ -47,12 +47,12 @@ public class Contract {
         this.productName = value;
     }
 
-    public String getMasterContract() {
-        return this.masterContract;
+    public String getContractCode() {
+        return this.contractCode;
     }
 
-    public void setMasterContract(String value) {
-        this.masterContract = value;
+    public void setContractCode(String value) {
+        this.contractCode = value;
     }
 
     public long getUnitsPerContract() {

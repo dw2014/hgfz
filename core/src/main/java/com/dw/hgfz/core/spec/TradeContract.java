@@ -25,7 +25,7 @@ public class TradeContract {
     @SerializedName("交易单位/手")
     private long unitsPerContract;
 
-    @SerializedName("价格/最小变动价位")
+    @SerializedName("价格/最小价位变动")
     private double pricePerMinPriceFluctuation;
 
     public String getDate() {
