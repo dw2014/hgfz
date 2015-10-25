@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by dw on 9/7/2015.
  */
-public class sortList<E> {
+public class SortGenericList<E> {
     public void sort(List<E> list, final String method, final String sort) {
         Collections.sort(list, new Comparator() {
             public int compare(Object a, Object b) {

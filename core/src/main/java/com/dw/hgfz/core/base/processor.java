@@ -3,7 +3,7 @@ package com.dw.hgfz.core.base;
 import com.dw.hgfz.common.httpclient.ApacheClient;
 import com.dw.hgfz.common.utils.CommonHelper;
 import com.dw.hgfz.common.utils.GsonHelper;
-import com.dw.hgfz.common.utils.sortList;
+import com.dw.hgfz.common.utils.SortGenericList;
 import com.dw.hgfz.common.xmlparser.DOMParser;
 import com.dw.hgfz.core.spec.Contract;
 import com.dw.hgfz.core.spec.Rule;
@@ -41,8 +41,8 @@ public class processor {
     }
 
     public static List<TradeProduct> sort(List<TradeProduct> tradeProducts, String sort) {
-        sortList<TradeProduct> sortList = new sortList<>();
-        sortList.sort(tradeProducts, "getDate", sort);
+        SortGenericList<TradeProduct> SortGenericList = new SortGenericList<>();
+        SortGenericList.sort(tradeProducts, "getDate", sort);
         return tradeProducts;
     }
 
