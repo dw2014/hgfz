@@ -158,7 +158,7 @@ public class processor {
     }
 
     public static String process(String code, String path, boolean writeToFile) throws Exception {
-        if (code.length() != 5 || code.length() != 6 || code.length() != 8) {
+        if (code.length() != 5 && code.length() != 6 && code.length() != 8) {
             throw new InputMismatchException("invalid input code: " + code);
         }
         if (code.length() == 8 && (code.startsWith("sz") || code.startsWith("sh"))) {
