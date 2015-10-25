@@ -57,9 +57,6 @@ public class MainActivity extends Activity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            result = result.replace("latest_contract_data", getResources().getString(R.string.latest_contract_data));
-            result = result.replace("latest_trade_data", getResources().getString(R.string.latest_trade_data));
-            result = result.replace("rule_calculation_result", getResources().getString(R.string.rule_calculation_result));
             textView.setMovementMethod(new ScrollingMovementMethod());
             textView.setText(result);
         }

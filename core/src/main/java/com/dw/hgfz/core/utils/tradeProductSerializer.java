@@ -13,14 +13,14 @@ public class tradeProductSerializer implements JsonSerializer<TradeProduct> {
     @Override
     public JsonElement serialize(TradeProduct tradeProduct, Type type, JsonSerializationContext context) {
         JsonObject object = new JsonObject();
-        object.add("ÈÕÆÚ", context.serialize(tradeProduct.getDate()));
-        object.add("¿ªÅÌ", context.serialize(tradeProduct.getOpen()));
-        object.add("×î¸ß", context.serialize(tradeProduct.getHigh()));
-        object.add("×îµÍ", context.serialize(tradeProduct.getLow()));
-        object.add("ÊÕÅÌ", context.serialize(tradeProduct.getClose()));
-        object.add("³É½»", context.serialize(tradeProduct.getVolume()));
-        object.add("ÕæÊµ²¨¶¯·ù¶È", context.serialize(tradeProduct.getTr()));
-        object.add("ÕæÊµ²¨¶¯·ù¶È20ÈÕ¾ùÖµ", context.serialize(tradeProduct.getAtr()));
+        object.add("æ—¥æœŸ", context.serialize(tradeProduct.getDate()));
+        object.add("å¼€ç›˜", context.serialize(tradeProduct.getOpen()));
+        object.add("æœ€é«˜", context.serialize(tradeProduct.getHigh()));
+        object.add("æœ€ä½", context.serialize(tradeProduct.getLow()));
+        object.add("æ”¶ç›˜", context.serialize(tradeProduct.getClose()));
+        object.add("æˆäº¤", context.serialize(tradeProduct.getVolume()));
+        object.add("çœŸå®æ³¢åŠ¨å¹…åº¦", context.serialize(tradeProduct.getTr()));
+        object.add("çœŸå®æ³¢åŠ¨å¹…åº¦20æ—¥å‡å€¼", context.serialize(tradeProduct.getAtr()));
         return object;
     }
 

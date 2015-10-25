@@ -13,12 +13,12 @@ public class ruleSerializer implements JsonSerializer<Rule> {
     @Override
     public JsonElement serialize(Rule rule, Type type, JsonSerializationContext context) {
         JsonObject object = new JsonObject();
-        object.add("½»Ò×´úÂë", context.serialize(rule.getTradeCode()));
-        object.add("ÈëÊĞÏµÍ³", context.serialize(rule.getSystem()));
-        object.add("ÊĞ³¡ĞĞÇé", context.serialize(rule.getMarketQuotation()));
-        object.add("ÈëÊĞ¼ÛÎ»", context.serialize(rule.getOrders()));
-        object.add("ÍË³ö¼ÛÎ»", context.serialize(rule.getQuitOrder()));
-        object.add("Í·´ç¹æÄ£", context.serialize(rule.getPosition()));
+        object.add("äº¤æ˜“ä»£ç ", context.serialize(rule.getTradeCode()));
+        object.add("å…¥å¸‚ç³»ç»Ÿ", context.serialize(rule.getSystem()));
+        object.add("å¸‚åœºè¡Œæƒ…", context.serialize(rule.getMarketQuotation()));
+        object.add("å…¥å¸‚ä»·ä½", context.serialize(rule.getOrders()));
+        object.add("é€€å‡ºä»·ä½", context.serialize(rule.getQuitOrder()));
+        object.add("å¤´å¯¸è§„æ¨¡", context.serialize(rule.getPosition()));
         return object;
     }
 

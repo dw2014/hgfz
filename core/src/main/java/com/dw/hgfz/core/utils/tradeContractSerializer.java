@@ -13,13 +13,13 @@ public class tradeContractSerializer implements JsonSerializer<TradeContract> {
     @Override
     public JsonElement serialize(TradeContract tradeContract, Type type, JsonSerializationContext context) {
         JsonObject object = new JsonObject();
-        object.add("ÈÕÆÚ", context.serialize(tradeContract.getDate()));
-        object.add("ÉÌÆ·Ãû³Æ", context.serialize(tradeContract.getProductName()));
-        object.add("ºÏÔ¼¼Û¸ñ/ÊÖ", context.serialize(tradeContract.getPrice()));
-        object.add("±£Ö¤½ğ¼Û¸ñ/ÊÖ", context.serialize(tradeContract.getMarginPrice()));
-        object.add("¼Û¸ñ/½»Ò×µ¥Î»", context.serialize(tradeContract.getPricePerUnit()));
-        object.add("½»Ò×µ¥Î»/ÊÖ", context.serialize(tradeContract.getUnitsPerContract()));
-        object.add("¼Û¸ñ/×îĞ¡±ä¶¯¼ÛÎ»", context.serialize(tradeContract.getPricePerMinPriceFluctuation()));
+        object.add("æ—¥æœŸ", context.serialize(tradeContract.getDate()));
+        object.add("å•†å“åç§°", context.serialize(tradeContract.getProductName()));
+        object.add("åˆçº¦ä»·æ ¼/æ‰‹", context.serialize(tradeContract.getPrice()));
+        object.add("ä¿è¯é‡‘ä»·æ ¼/æ‰‹", context.serialize(tradeContract.getMarginPrice()));
+        object.add("ä»·æ ¼/äº¤æ˜“å•ä½", context.serialize(tradeContract.getPricePerUnit()));
+        object.add("äº¤æ˜“å•ä½/æ‰‹", context.serialize(tradeContract.getUnitsPerContract()));
+        object.add("ä»·æ ¼/æœ€å°å˜åŠ¨ä»·ä½", context.serialize(tradeContract.getPricePerMinPriceFluctuation()));
         return object;
     }
 
