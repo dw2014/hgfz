@@ -4,7 +4,6 @@ import com.dw.hgfz.common.httpclient.ApacheClient;
 import com.dw.hgfz.common.utils.ConfigHelper;
 import com.dw.hgfz.core.base.calculator;
 import com.dw.hgfz.core.base.processor;
-import com.dw.hgfz.core.base.readContracts;
 import com.dw.hgfz.core.spec.TradeProduct;
 import org.junit.Test;
 
@@ -17,9 +16,9 @@ public class sample {
 
     @Test
     public void sampleFutureCalculate() throws Exception {
-        for (int i = 0; i < readContracts.CONTRACTS.size(); i++) {
-            String contract = readContracts.CONTRACTS.get(i).getContractCode();
-            //String results = ApacheClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
+        String[] contracts = ConfigHelper.getSetting("masterContracts").split(",");
+        for (int i = 0; i < contracts.length; i++) {
+            String contract = contracts[i];
             processor.processFuture(contract, ConfigHelper.getSetting("logPath"), true);
         }
     }
