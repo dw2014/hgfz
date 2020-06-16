@@ -36,7 +36,7 @@ public class processor {
         if (isFuture) {
             return ApacheClient.executeGet(readConfigs.getConfig(constStrings.FutureDataURIKey) + code);
         } else {
-            return ApacheClient.executeGet(readConfigs.getConfig(constStrings.StockDataURIKey) + code + setDateRange());
+            return ApacheClient.executeGet(readConfigs.getConfig(constStrings.StockDataURIKey) + code + "&scale=240&datalen=30&ma=20");
         }
     }
 
@@ -97,6 +97,22 @@ public class processor {
         return tradeProducts;
     }
 
+    public static List<TradeProduct> parseStockResults2(String results) throws Exception {
+        List<TradeProduct> tradeProducts = new ArrayList<>();
+        JsonArray jsonArray = GsonHelper.gsonDeserializer(results, JsonArray.class);
+        for (int i = 0; i < jsonArray.size(); i++) {
+            TradeProduct tmp = new TradeProduct();
+            tmp.setDate(jsonArray.get(i).getAsJsonObject().get("day").getAsString());
+            tmp.setOpen(jsonArray.get(i).getAsJsonObject().get("open").getAsDouble());
+            tmp.setHigh(jsonArray.get(i).getAsJsonObject().get("high").getAsDouble());
+            tmp.setLow(jsonArray.get(i).getAsJsonObject().get("low").getAsDouble());
+            tmp.setClose(jsonArray.get(i).getAsJsonObject().get("close").getAsDouble());
+            tmp.setVolume(jsonArray.get(i).getAsJsonObject().get("volume").getAsLong());
+            tradeProducts.add(i, tmp);
+        }
+        return tradeProducts;
+    }
+
     public static String processFuture(String futureCode, String path, boolean writeToFile)
             throws Exception {
         String results = getRawResults(futureCode, true);
@@ -130,7 +146,7 @@ public class processor {
         Contract contract = new Contract();
         contract.setContractCode(stockCode);
         contract.setMinPriceFluctuation(0.01);
-        List<TradeProduct> tradeProducts = parseStockResults(results);
+        List<TradeProduct> tradeProducts = parseStockResults2(results);
         tradeProducts = sort(tradeProducts, null);
         tradeProducts = calculator.calculateTR(tradeProducts);
         tradeProducts.remove(0);//first tr is always 0, cause an error in calculate atr

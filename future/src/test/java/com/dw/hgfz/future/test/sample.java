@@ -25,7 +25,7 @@ public class sample {
 
     @Test
     public void sampleCalculateSingleContractPeakValueWithStartDate() throws Exception {
-        String contract = "AG1512";
+        String contract = "AG2012";
         String results = ApacheClient.executeGet(ConfigHelper.getSetting("futureDataURI") + contract);
         List<TradeProduct> tradeProducts = processor.parseFutureResults(results);
         processor.sort(tradeProducts, "desc");
@@ -36,6 +36,12 @@ public class sample {
     @Test
     public void sampleStockCalculate() throws Exception {
         //String results = ApacheClient.executeGet(ConfigHelper.getSetting("stockDataURI") + "sh601600" + processor.setDateRange());
-        processor.processStock("sh601600", ConfigHelper.getSetting("logPath"), true);
+        processor.processStock("sh601600", ConfigHelper.getSetting("logPath"), false);
+    }
+
+    @Test
+    public void singleFutureCalculate() throws Exception {
+        //String results = ApacheClient.executeGet(ConfigHelper.getSetting("stockDataURI") + "sh601600" + processor.setDateRange());
+        processor.processFuture("AG2012", ConfigHelper.getSetting("logPath"), false);
     }
 }

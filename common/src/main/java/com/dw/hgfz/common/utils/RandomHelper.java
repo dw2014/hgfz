@@ -51,11 +51,11 @@ public class RandomHelper {
     }
 
     public static String randomEmail() {
-        return "silkcloudtest+" + randomAlphabetic(8).toLowerCase() + String.format("@gmail.com");
+        return "dw+hgfz_" + randomAlphabetic(8).toLowerCase() + String.format("@unity3d.com");
     }
 
     public static String randomUsername() {
-        return "slTest_" + randomAlphabetic(8);
+        return "dwhgfz_" + randomAlphabetic(8);
     }
 
     public static String randomUsername(Integer length) {
