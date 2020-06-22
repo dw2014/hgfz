@@ -22,14 +22,17 @@ public class Contract {
     @SerializedName("最小变动价位")
     private double minPriceFluctuation;
 
-    @SerializedName("每日最大价格波动")
-    private double maxDailyPriceFluctuation;
+    @SerializedName("涨停板价位比")
+    private double dailyPriceFluctuation;
 
-    @SerializedName("最低交易保证金")
+    @SerializedName("最低保证金")
     private double lowestMargin;
 
-    @SerializedName("平日交易保证金")
+    @SerializedName("平日保证金")
     private double normalMargin;
+
+    @SerializedName("平日交易时间")
+    private String tradingTime;
 
     public String getTradeCode() {
         return this.tradeCode;
@@ -71,12 +74,12 @@ public class Contract {
         this.minPriceFluctuation = value;
     }
 
-    public double getMaxDailyPriceFluctuation() {
-        return this.maxDailyPriceFluctuation;
+    public double getDailyPriceFluctuation() {
+        return this.dailyPriceFluctuation;
     }
 
-    public void setMaxDailyPriceFluctuation(double value) {
-        this.maxDailyPriceFluctuation = value;
+    public void setDailyPriceFluctuation(double value) {
+        this.dailyPriceFluctuation = value;
     }
 
     public double getLowestMargin() {
@@ -94,4 +97,8 @@ public class Contract {
     public void setNormalMargin(double value) {
         this.normalMargin = value;
     }
+
+    public String getTradingTime() { return this.tradingTime; }
+
+    public void setTradingTime(String value) { this.tradeCode = value; }
 }

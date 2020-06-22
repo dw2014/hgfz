@@ -4,240 +4,270 @@
         <productName>螺纹</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
-        <lowestMargin>0.07</lowestMargin>
-        <normalMargin>0.12</normalMargin>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
+        <lowestMargin>0.09</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="I">
         <productName>铁矿</productName>
         <unitsPerContract>100</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <minPriceFluctuation>0.5</minPriceFluctuation>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.09</lowestMargin>
+        <normalMargin>0.15</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="M">
         <productName>豆粕</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.12</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="C">
         <productName>玉米</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.08</normalMargin>
+        <dailyPriceFluctuation>0.05</dailyPriceFluctuation>
+        <lowestMargin>0.06</lowestMargin>
+        <normalMargin>0.09</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="TA">
         <productName>PTA（精对苯二甲酸）</productName>
         <unitsPerContract>5</unitsPerContract>
-        <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <minPriceFluctuation>2</minPriceFluctuation>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
         <lowestMargin>0.08</lowestMargin>
-        <normalMargin>0.13</normalMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="RM">
         <productName>菜粕</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.05</dailyPriceFluctuation>
+        <lowestMargin>0.06</lowestMargin>
+        <normalMargin>0.12</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="MA">
         <productName>甲醇</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.06</dailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="P">
         <productName>棕榈</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>2</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.09</normalMargin>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.15</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="SR">
         <productName>白糖</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.06</lowestMargin>
+        <dailyPriceFluctuation>0.06</dailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
         <normalMargin>0.11</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="Y">
         <productName>豆油</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>2</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.09</normalMargin>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.15</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="AG">
         <productName>白银</productName>
         <unitsPerContract>15</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.07</maxDailyPriceFluctuation>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
         <lowestMargin>0.10</lowestMargin>
-        <normalMargin>0.15</normalMargin>
+        <normalMargin>0.18</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-0230</tradingTime>
     </contract>
     <contract tradeCode="PP">
         <productName>丙烯</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.09</dailyPriceFluctuation>
+        <lowestMargin>0.11</lowestMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="L">
         <productName>乙烯</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.09</dailyPriceFluctuation>
+        <lowestMargin>0.11</lowestMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="FG">
         <productName>玻璃</productName>
         <unitsPerContract>20</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.06</lowestMargin>
+        <dailyPriceFluctuation>0.04</dailyPriceFluctuation>
+        <lowestMargin>0.05</lowestMargin>
         <normalMargin>0.11</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="CF">
         <productName>郑棉</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.06</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.06</dailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="RU">
         <productName>橡胶</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.03</maxDailyPriceFluctuation>
-        <lowestMargin>0.07</lowestMargin>
-        <normalMargin>0.13</normalMargin>
+        <dailyPriceFluctuation>0.09</dailyPriceFluctuation>
+        <lowestMargin>0.11</lowestMargin>
+        <normalMargin>0.18</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="NI">
         <productName>沪镍</productName>
         <unitsPerContract>1</unitsPerContract>
         <minPriceFluctuation>10</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.10</lowestMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-0100</tradingTime>
     </contract>
     <contract tradeCode="CU">
         <productName>沪铜</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>10</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.06</maxDailyPriceFluctuation>
-        <lowestMargin>0.07</lowestMargin>
-        <normalMargin>0.13</normalMargin>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.10</lowestMargin>
+        <normalMargin>0.17</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-0100</tradingTime>
     </contract>
     <contract tradeCode="CS">
         <productName>淀粉</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
+        <dailyPriceFluctuation>0.05</dailyPriceFluctuation>
         <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <normalMargin>0.09</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="AL">
         <productName>沪铝</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.10</lowestMargin>
+        <normalMargin>0.30</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-0100</tradingTime>
     </contract>
     <contract tradeCode="AU">
         <productName>黄金</productName>
         <unitsPerContract>1000</unitsPerContract>
-        <minPriceFluctuation>0.05</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.05</maxDailyPriceFluctuation>
-        <lowestMargin>0.07</lowestMargin>
-        <normalMargin>0.13</normalMargin>
+        <minPriceFluctuation>0.02</minPriceFluctuation>
+        <dailyPriceFluctuation>0.06</dailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-0230</tradingTime>
     </contract>
     <contract tradeCode="BU">
         <productName>沥青</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>2</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.03</maxDailyPriceFluctuation>
-        <lowestMargin>0.04</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.13</dailyPriceFluctuation>
+        <lowestMargin>0.15</lowestMargin>
+        <normalMargin>0.20</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="J">
         <productName>焦炭</productName>
         <unitsPerContract>100</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.11</normalMargin>
+        <minPriceFluctuation>0.5</minPriceFluctuation>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.09</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="ZN">
         <productName>沪锌</productName>
         <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>5</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.06</lowestMargin>
-        <normalMargin>0.12</normalMargin>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.10</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-0100</tradingTime>
     </contract>
     <contract tradeCode="JD">
         <productName>鸡蛋</productName>
-        <unitsPerContract>10</unitsPerContract>
+        <unitsPerContract>5</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.06</dailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
+        <normalMargin>0.15</normalMargin>
+        <tradingTime>0900-1130,1330-1500,以及交易所规定的其他时间</tradingTime>
     </contract>
     <contract tradeCode="OI">
         <productName>菜油</productName>
         <unitsPerContract>10</unitsPerContract>
-        <minPriceFluctuation>2</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <minPriceFluctuation>1</minPriceFluctuation>
+        <dailyPriceFluctuation>0.05</dailyPriceFluctuation>
+        <lowestMargin>0.06</lowestMargin>
+        <normalMargin>0.12</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="A">
         <productName>豆一</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.08</normalMargin>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
+        <lowestMargin>0.08</lowestMargin>
+        <normalMargin>0.14</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="JM">
         <productName>焦煤</productName>
         <unitsPerContract>60</unitsPerContract>
-        <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.11</normalMargin>
+        <minPriceFluctuation>0.5</minPriceFluctuation>
+        <dailyPriceFluctuation>0.08</dailyPriceFluctuation>
+        <lowestMargin>0.09</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="HC">
         <productName>轧板</productName>
         <unitsPerContract>10</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.03</maxDailyPriceFluctuation>
-        <lowestMargin>0.04</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.07</dailyPriceFluctuation>
+        <lowestMargin>0.09</lowestMargin>
+        <normalMargin>0.13</normalMargin>
+        <tradingTime>0900-1130,1330-1500,2100-2300</tradingTime>
     </contract>
     <contract tradeCode="WH">
         <productName>强麦</productName>
         <unitsPerContract>20</unitsPerContract>
         <minPriceFluctuation>1</minPriceFluctuation>
-        <maxDailyPriceFluctuation>0.04</maxDailyPriceFluctuation>
-        <lowestMargin>0.05</lowestMargin>
-        <normalMargin>0.10</normalMargin>
+        <dailyPriceFluctuation>0.05</dailyPriceFluctuation>
+        <lowestMargin>0.07</lowestMargin>
+        <normalMargin>0.50</normalMargin>
+        <tradingTime>0900-1130,1330-1500</tradingTime>
     </contract>
 </contracts>

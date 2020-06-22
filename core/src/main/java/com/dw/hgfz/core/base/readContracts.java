@@ -34,9 +34,10 @@ public final class readContracts {
                 contract.setProductName(eElement.getElementsByTagName("productName").item(0).getTextContent());
                 contract.setUnitsPerContract(Long.parseLong(eElement.getElementsByTagName("unitsPerContract").item(0).getTextContent()));
                 contract.setMinPriceFluctuation(Double.parseDouble(eElement.getElementsByTagName("minPriceFluctuation").item(0).getTextContent()));
-                contract.setMaxDailyPriceFluctuation(Double.parseDouble(eElement.getElementsByTagName("maxDailyPriceFluctuation").item(0).getTextContent()));
+                contract.setDailyPriceFluctuation(Double.parseDouble(eElement.getElementsByTagName("dailyPriceFluctuation").item(0).getTextContent()));
                 contract.setLowestMargin(Double.parseDouble(eElement.getElementsByTagName("lowestMargin").item(0).getTextContent()));
                 contract.setNormalMargin(Double.parseDouble(eElement.getElementsByTagName("normalMargin").item(0).getTextContent()));
+                contract.setTradingTime(eElement.getElementsByTagName("tradingTime").item(0).getTextContent());
                 CONTRACTS.add(contract);
             }
         }
